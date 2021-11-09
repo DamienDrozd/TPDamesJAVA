@@ -32,7 +32,11 @@ public class Game {
 		int y =0;
 		for (int i = 0 ; i < mapGame.length; i++) {
 			
-			System.out.print("| ");
+			System.out.print("|  ");
+			
+			if(y%4==2 || y%4==3) {
+				System.out.print("   |  ");
+			}
 			
 			
 			
@@ -44,23 +48,34 @@ public class Game {
 				System.out.print(" ");
 			}
 			
-			if (i<9 || (i>=10 && y%2 != 0) || (y == 5)) {
+			if ((i<9) || (i>10 && y%2 != 0) || (y == 5) || (y == 3 && i==9)) {
 				System.out.print(" ");
+			}
+			
+			if(y%4==0 || (y%4==1)) {
+				System.out.print("|     ");
 			}
 			
 			
 			
 			if (((i+1)%5) == 0 && y%2==0 && i != 0) {
 				y = y+1;
-				System.out.print("| ");
+				System.out.print("|");
 				System.out.print("\n");
 				i = i-5;
+				
 				continue;
 			}
+			
 			if ((i+1)%5 == 0 && y%2!=0) {
 				y = y+1;
-				System.out.print("| ");
+				System.out.print("|");
 				System.out.print("\n");
+				
+				for (int k = 0; k< tailleTabX;k++) {
+					System.out.print("------");
+				}
+				System.out.print("-\n");
 				continue;
 			}
 		}
