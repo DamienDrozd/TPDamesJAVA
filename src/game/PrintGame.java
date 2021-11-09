@@ -1,7 +1,7 @@
 package game;
 
 public class PrintGame {
-	public static void printGame(char[] mapGame) {
+	public static void printGame(String[] mapGame) {
 		int y =0;
 		for (int i = 0 ; i < mapGame.length; i++) {
 			

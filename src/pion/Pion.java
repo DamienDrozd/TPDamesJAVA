@@ -9,18 +9,18 @@ public class Pion {
     int joueur;
     
     
-	public int[] canMove() {
-        for (Joueur joueur : joueurTab[]) {
-			switch(joueur) {
-				case 1: 
-				if pos
+	//public int[] canMove() {
+        //for (Joueur joueur : joueurTab[]) {
+		//	switch(joueur) {
+				//case 1: 
+				//if pos
 				
 				
 				
-			}	
-		}
-    	return null;
-    }
+			//}	
+		//}
+    //	return null;
+    //}
 	
    
 
@@ -40,12 +40,22 @@ public class Pion {
 		this.pos = pos;
 	}
 
-	public String getDirection() {
+
+
+	public String[] getDirection() {
 		return direction;
 	}
 
-	public void setDirection(String direction) {
+	public void setDirection(String[] direction) {
 		this.direction = direction;
+	}
+
+	public int getJoueur() {
+		return joueur;
+	}
+
+	public void setJoueur(int joueur) {
+		this.joueur = joueur;
 	}
 
 	public int getNbCase() {
