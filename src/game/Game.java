@@ -24,13 +24,15 @@ public class Game {
 		}
 		
 	    char[] mapGame = new char[(tailleTabX*tailleTabY)/2];
-	    mapGame = remplirTab(mapGame);
+	    mapGame = remplirTab(mapGame, tabJoueur1, tabJoueur2);
 		
 		//System.out.println("Choisissez votre mode de jeu:\n1/ Mode 1 joueur\n2/ Mode 2 joueurs");
 		
 		//int choixMode = Utilitaires.readInt();
 		
 		while(endGame != true) {
+			
+			mapGame = remplirTab(mapGame, tabJoueur1, tabJoueur2);
 			
 			PrintGame.printGame(mapGame);
 
@@ -41,9 +43,20 @@ public class Game {
 	
 	
 	
-	public static char[] remplirTab(char[] mapGame) {
+	public static char[] remplirTab(String[] mapGame, Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		for (int x = 0; x < (tailleTabX * tailleTabY)/2; x++ ) {
-			mapGame[x] = '.';
+			mapGame[x] = ".";
+			
+			for (Pion pion : tabJoueur1) {
+				
+			
+				if (x+1 == pion) {
+					mapGame[x] = pion.getCharacter();
+				}
+			}
+			for (Pion pion : tabJoueur1) {
+				
+			}
 		}
 		
 		
