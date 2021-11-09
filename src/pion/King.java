@@ -1,5 +1,9 @@
 package pion;
 
-public class King {
+public class King extends Pion {
+
+	
+
+	
 
 }

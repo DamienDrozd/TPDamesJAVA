@@ -1,16 +1,27 @@
 package game;
 
+import pion.Pion;
+import pion.Men;
+import pion.King;
 import utilitaires.Utilitaires;
 
 public class Game {
 	
 	static int tailleTabX = 10;
     static int tailleTabY = 10;
+    static int nbPions = 20;
     
 	
 	public static void startGame() {
 		boolean endGame = false;
 		
+		Pion[] tabJoueur1 = new Pion[nbPions];
+		Pion[] tabJoueur2 = new Pion[nbPions];
+		
+		for (int i=0;i<nbPions;i++) {
+			tabJoueur1[i] = new Men(i+1,null, 0,  "O");
+			tabJoueur2[i] = new Men(50-i,null, 0,  "X");
+		}
 		
 	    char[] mapGame = new char[(tailleTabX*tailleTabY)/2];
 	    mapGame = remplirTab(mapGame);
@@ -21,70 +32,21 @@ public class Game {
 		
 		while(endGame != true) {
 			
-			printGame(mapGame);
+			PrintGame.printGame(mapGame);
 
 			int choixPion = Utilitaires.readInt();
 		
 		}
 	}
 	
-	public static void printGame(char[] mapGame) {
-		int y =0;
-		for (int i = 0 ; i < mapGame.length; i++) {
-			
-			System.out.print("|  ");
-			
-			if(y%4==2 || y%4==3) {
-				System.out.print("   |  ");
-			}
-			
-			
-			
-			if (y%2 == 0) {
-				System.out.print(i+1);
-				System.out.print(" ");
-			} else {
-				System.out.print(mapGame[i]);
-				System.out.print(" ");
-			}
-			
-			if ((i<9) || (i>10 && y%2 != 0) || (y == 5) || (y == 3 && i==9)) {
-				System.out.print(" ");
-			}
-			
-			if(y%4==0 || (y%4==1)) {
-				System.out.print("|     ");
-			}
-			
-			
-			
-			if (((i+1)%5) == 0 && y%2==0 && i != 0) {
-				y = y+1;
-				System.out.print("|");
-				System.out.print("\n");
-				i = i-5;
-				
-				continue;
-			}
-			
-			if ((i+1)%5 == 0 && y%2!=0) {
-				y = y+1;
-				System.out.print("|");
-				System.out.print("\n");
-				
-				for (int k = 0; k< tailleTabX;k++) {
-					System.out.print("------");
-				}
-				System.out.print("-\n");
-				continue;
-			}
-		}
-	}
+	
 	
 	public static char[] remplirTab(char[] mapGame) {
 		for (int x = 0; x < (tailleTabX * tailleTabY)/2; x++ ) {
 			mapGame[x] = '.';
 		}
+		
+		
 		return mapGame;
 	}
 

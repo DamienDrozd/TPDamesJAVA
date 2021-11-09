@@ -1,6 +1,7 @@
 package utilitaires;
 
 import java.util.Scanner;
+import pion.Pion;
 
 public class Utilitaires {
 	
@@ -17,5 +18,14 @@ public class Utilitaires {
         return i;
     }
 	
+	 
+	public int[] canEat() {
+    	for (Joueur joueur : joueurTab[]) {
+			if Pion.
+		} {
+			
+		}
+    	return null;
+    }
 	
 }
