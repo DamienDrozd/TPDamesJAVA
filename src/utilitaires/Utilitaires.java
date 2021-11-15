@@ -19,13 +19,6 @@ public class Utilitaires {
     }
 	
 	 
-	public int[] canEat() {
-    	for (Joueur joueur : joueurTab[]) {
-			if Pion.
-		} {
-			
-		}
-    	return null;
-    }
+
 	
 }

@@ -74,7 +74,6 @@ public class Pion {
 		this.character = character;
 	}
 
-	@Override
 	public String toString() {
 		return "Pion [pos=" + pos + ", direction=" + direction + ", nbCase=" + nbCase + ", character=" + character
 				+ "]";

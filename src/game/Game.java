@@ -36,7 +36,7 @@ public class Game {
 			
 			PrintGame.printGame(mapGame);
 
-			int choixPion = Utilitaires.readInt();
+			Menu.menu(tabJoueur1, tabJoueur2);
 		
 		}
 	}
