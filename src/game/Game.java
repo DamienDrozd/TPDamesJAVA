@@ -19,8 +19,8 @@ public class Game {
 		Pion[] tabJoueur2 = new Pion[nbPions];
 		
 		for (int i=0;i<nbPions;i++) {
-			tabJoueur1[i] = new Men(i+1,null, 0,  "O");
-			tabJoueur2[i] = new Men(50-i,null, 0,  "X");
+			tabJoueur1[i] = new Men(i+1,null, 0,  "O", 1);
+			tabJoueur2[i] = new Men(50-i,null, 0,  "X", 2);
 		}
 		
 		String[] mapGame = new String[(tailleTabX*tailleTabY)/2];
@@ -31,6 +31,15 @@ public class Game {
 		//int choixMode = Utilitaires.readInt();
 		
 		while(endGame != true) {
+			
+			for (int i = 0;i < tabJoueur1.length; i++) {
+				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
+				tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
+			}
+			for (int i = 0;i < tabJoueur2.length; i++) {
+				tabJoueur2[i].canEat(tabJoueur2, tabJoueur1);
+				tabJoueur2[i].canMove(tabJoueur2, tabJoueur1);
+			}
 			
 			mapGame = Tab.remplirTab(mapGame, tabJoueur1, tabJoueur2);
 			
