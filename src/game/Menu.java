@@ -17,8 +17,8 @@ public class Menu {
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
 			
-			tabJoueur1[15].setTabCanMoove(new int[]{21,22});//provisoire
-			tabJoueur1[15].setTabCanEat(new int[]{26,27});
+			//tabJoueur1[15].setTabCanMoove(new int[]{21,22});//provisoire
+			//tabJoueur1[15].setTabCanEat(new int[]{26,27});
 		
 			for (int i = 0;i<tabJoueur1.length; i++) {
 				
