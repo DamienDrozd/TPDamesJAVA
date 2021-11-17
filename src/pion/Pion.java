@@ -9,10 +9,11 @@ public class Pion {
     int nbCase;
     String character;
 	String type;
-    int joueur1;
+	boolean joueur1;
 	boolean eat;
     int[] tabCanMoove;
     int[] tabCanEat;
+    boolean isDead;
     
     
 	
@@ -51,11 +52,24 @@ public class Pion {
 	public void setCharacter(String character) {
 		this.character = character;
 	}
-	public int getJoueur() {
-		return joueur;
+	
+	public String getType() {
+		return type;
 	}
-	public void setJoueur(int joueur) {
-		this.joueur = joueur;
+	public void setType(String type) {
+		this.type = type;
+	}
+	public boolean isJoueur1() {
+		return joueur1;
+	}
+	public void setJoueur1(boolean joueur1) {
+		this.joueur1 = joueur1;
+	}
+	public boolean isEat() {
+		return eat;
+	}
+	public void setEat(boolean eat) {
+		this.eat = eat;
 	}
 	public int[] getTabCanMoove() {
 		return tabCanMoove;
@@ -69,45 +83,35 @@ public class Pion {
 	public void setTabCanEat(int[] tabCanEat) {
 		this.tabCanEat = tabCanEat;
 	}
+	
 	public String toString() {
 		return "Pion [pos=" + pos + ", direction=" + Arrays.toString(direction) + ", nbCase=" + nbCase + ", character="
-				+ character + ", joueur=" + joueur + ", tabCanMoove=" + Arrays.toString(tabCanMoove) + ", tabCanEat="
-				+ Arrays.toString(tabCanEat) + "]";
+				+ character + ", type=" + type + ", joueur1=" + joueur1 + ", eat=" + eat + ", tabCanMoove="
+				+ Arrays.toString(tabCanMoove) + ", tabCanEat=" + Arrays.toString(tabCanEat) + "]";
 	}
-
-
-	public boolean canMove(Pion[] tabJoueur1, Pion[] tabJoueur2, int[] newpos) {
+	
+	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		boolean can = false;
-        for (Pion joueur : tabJoueur1) {
-			if (this.pion == true && this.joueur1 == true && (newpos[0] < this.pos)){
-				this.pos = newpos[0];
-				can = true
-			} else {
-				if (this.pion == true &&this.joueur1 == false && (newpos[0] > this.pos));
-				this.pos = newpos[0]
-				can = true
+		for(int i = 0; i<50;i++) {
+	        for (Pion joueur : tabJoueur1) {
+				if (this.isDead == false && this.joueur1 == true && (newpos[0] < this.pos)){
+					this.pos = newpos[0];
+					can = true;
+				} else {
+					if (this.isDead == false && this.joueur1 == false && (newpos[0] > this.pos));
+					this.pos = newpos[0];
+					can = true;
+				} 
 			}
-			if (this pion == true && (can == true && (this.joueur1 && (this.pos = 1 || this.pos = 2 || this.pos = 3 || this.pos = 4 || this.pos = 5)) || can == true && (!this.joueur1 && (this.pos = 46 || this.pos = 47 || this.pos = 48 || this.pos = 49 || this.pos = 50)))){
-				this.type = "dame";
-				return true;
-			} else {
-				return can;
-			}
-		}
-		for (Pion joueur : tabJoueur2) {
-			if (this.pion == true && this.joueur1 == true && (newpos[0] < this.pos)){
-				this.pos = newpos[0];
-				can = true
-			} else {
-				if (this.pion == true &&this.joueur1 == false && (newpos[0] > this.pos));
-				this.pos = newpos[0]
-				can = true
-			}
-			if (this pion == true && (can == true && (this.joueur1 && (this.pos = 1 || this.pos = 2 || this.pos = 3 || this.pos = 4 || this.pos = 5)) || can == true && (!this.joueur1 && (this.pos = 46 || this.pos = 47 || this.pos = 48 || this.pos = 49 || this.pos = 50)))){
-				this.type = "dame";
-				return true;
-			} else {
-				return can;
+			for (Pion joueur : tabJoueur2) {
+				if (this.isDead == false && this.joueur1 == true && (newpos[0] < this.pos)){
+					this.pos = newpos[0];
+					can = true;
+				} else {
+					if (this.isDead == false &&this.joueur1 == false && (newpos[0] > this.pos));
+					this.pos = newpos[0];
+					can = true;
+				} 
 			}
 		}
     	this.tabCanMoove = null;
@@ -117,8 +121,8 @@ public class Pion {
 
 
 
-		non fonctionnel encore 
-	// public void canEat(Pion[] tabJoueur1) {
+	//	non fonctionnel encore 
+	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
     //     for (Pion joueur : tabJoueur1) {
 	// 	this.eat = false;
     //     int [] posApresManger = this.getPosManger(cible);
@@ -144,7 +148,7 @@ public class Pion {
         	
 	// 	}
     //     this.tabCanEat = null;
-    // }
+     }
 
 
 
@@ -175,12 +179,14 @@ public class Pion {
         return mangerpos;
     }
 	public boolean stillAlive() {
-        return !typePion.equals("mort");
-    }
-}
-
-public void ate() {
-	if(!stillAlive())
-		System.out.println("a pion has been eat");
-	this.typePion = "mort";
+	    return !typePion.equals("mort");
+	    
+	}
+	
+	public void ate() {
+		if(!stillAlive()) {
+			System.out.println("a pion has been eat");
+		this.typePion = "mort";
+		}
+	}
 }
