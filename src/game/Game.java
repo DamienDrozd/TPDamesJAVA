@@ -52,7 +52,7 @@ public class Game {
 		}
 	}
 	
-	public void isDame(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+	public static void isDame(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
 		for (int i = 0; i<tabJoueur2.length ; i++) {
 			

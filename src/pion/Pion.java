@@ -9,7 +9,7 @@ public class Pion {
     int nbCase;
     String character;
 	String type;
-	boolean joueur1;
+	int joueur;
 	boolean eat;
     int[] tabCanMoove;
     int[] tabCanEat;
@@ -59,11 +59,11 @@ public class Pion {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public boolean isJoueur1() {
-		return joueur1;
+	public int isJoueur() {
+		return joueur;
 	}
-	public void setJoueur1(boolean joueur1) {
-		this.joueur1 = joueur1;
+	public void setJoueur(int joueur) {
+		this.joueur = joueur;
 	}
 	public boolean isEat() {
 		return eat;
@@ -90,6 +90,7 @@ public class Pion {
 				+ Arrays.toString(tabCanMoove) + ", tabCanEat=" + Arrays.toString(tabCanEat) + "]";
 	}
 	
+	/**
 	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		boolean can = false;
 		for(int i = 0; i<50;i++) {
@@ -116,11 +117,8 @@ public class Pion {
 		}
     	this.tabCanMoove = null;
     }
-
-
-
-
-
+	 */
+	/**
 	//	non fonctionnel encore 
 	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
     //     for (Pion joueur : tabJoueur1) {
@@ -189,4 +187,25 @@ public class Pion {
 		this.typePion = "mort";
 		}
 	}
+
+	 */
+	
+	
+	public int[] canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+		
+		return null;
+	}
+	
+	public int[] canMoove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+		
+		return null;
+	}
 }
+	
+	
+
+
+
+
+
+	
