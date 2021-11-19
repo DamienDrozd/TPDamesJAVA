@@ -77,4 +77,32 @@ public class Menu {
 		return null;
 		
 	}
+	
+	public static int menuModeGame()
+	{
+		
+		int intChoosedMod = 0;
+		while(intChoosedMod == 0)
+		{
+			System.out.println("choisissez votre mode de jeu:");
+			System.out.println("1/ mode 1 joueur, ");
+			System.out.println("2/ mode 2 joueurs ");
+			intChoosedMod = Utilitaires.readInt();
+			
+			switch(intChoosedMod) {
+				case 1:
+					System.out.println("vous avez choisi le mode 1 joueur ");
+					return 1;
+				case 2:
+					System.out.println("vous avez choisi le mode 2 joueurs ");
+					return 2;
+				default:
+					System.out.println("Error, wrong input");
+					intChoosedMod = 0;
+					break;
+			}
+		}
+		
+		return 0;
+	}
 }

@@ -10,23 +10,25 @@ public class Pion {
     String character;
 	String type;
 	int joueur;
-	boolean eat;
     int[] tabCanMoove;
     int[] tabCanEat;
-    boolean isDead;
+    boolean isDead = false;
     
     
 	
-	public Pion(int pos, String[] direction, int nbCase, String character, int joueur, String type) {
+	
+	public Pion(int pos, String[] direction, int nbCase, String character, String type, int joueur, 
+			int[] tabCanMoove, int[] tabCanEat, boolean isDead) {
 		super();
 		this.pos = pos;
 		this.direction = direction;
 		this.nbCase = nbCase;
 		this.character = character;
-		this.joueur = joueur;
-		this.eat = false;
 		this.type = type;
-		
+		this.joueur = joueur;
+		this.tabCanMoove = tabCanMoove;
+		this.tabCanEat = tabCanEat;
+		this.isDead = isDead;
 	}
 	public int getPos() {
 		return pos;
@@ -52,24 +54,17 @@ public class Pion {
 	public void setCharacter(String character) {
 		this.character = character;
 	}
-	
 	public String getType() {
 		return type;
 	}
 	public void setType(String type) {
 		this.type = type;
 	}
-	public int isJoueur() {
+	public int getJoueur() {
 		return joueur;
 	}
 	public void setJoueur(int joueur) {
 		this.joueur = joueur;
-	}
-	public boolean isEat() {
-		return eat;
-	}
-	public void setEat(boolean eat) {
-		this.eat = eat;
 	}
 	public int[] getTabCanMoove() {
 		return tabCanMoove;
@@ -83,13 +78,21 @@ public class Pion {
 	public void setTabCanEat(int[] tabCanEat) {
 		this.tabCanEat = tabCanEat;
 	}
-	
+	public boolean isDead() {
+		return isDead;
+	}
+	public void setDead(boolean isDead) {
+		this.isDead = isDead;
+	}
 	public String toString() {
 		return "Pion [pos=" + pos + ", direction=" + Arrays.toString(direction) + ", nbCase=" + nbCase + ", character="
-				+ character + ", type=" + type + ", joueur1=" + joueur1 + ", eat=" + eat + ", tabCanMoove="
-				+ Arrays.toString(tabCanMoove) + ", tabCanEat=" + Arrays.toString(tabCanEat) + "]";
+				+ character + ", type=" + type + ", joueur=" + joueur + ", eat="  + ", tabCanMoove="
+				+ Arrays.toString(tabCanMoove) + ", tabCanEat=" + Arrays.toString(tabCanEat) + ", isDead=" + isDead
+				+ "]";
 	}
-	
+
+
+
 	/**
 	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		boolean can = false;
@@ -196,7 +199,7 @@ public class Pion {
 		return null;
 	}
 	
-	public int[] canMoove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+	public int[] canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
 		return null;
 	}

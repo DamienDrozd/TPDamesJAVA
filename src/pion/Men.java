@@ -6,11 +6,19 @@ public class Men extends Pion {
 	int nbCase = 1;
 
 	
-	public Men(int pos, String[] direction, int nbCase, String character, int joueur) {
-		super(pos, direction, nbCase, character, joueur);
+	
+	
+
+
+
+	public Men(int pos, String[] direction, int nbCase, String character, String type, int joueur,
+			int[] tabCanMoove, int[] tabCanEat, boolean isDead) {
+		super(pos, direction, nbCase, character, type, joueur, tabCanMoove, tabCanEat, isDead);
 		this.direction = direction;
 		this.nbCase = nbCase;
 	}
+
+
 	
 	
 	
