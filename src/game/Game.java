@@ -32,7 +32,7 @@ public class Game {
 		
 		while(endGame != true) {
 			
-			isDame(tabJoueur1,tabJoueur2);
+			Tab.isDame(tabJoueur1,tabJoueur2);
 			
 			for (int i = 0;i < tabJoueur1.length; i++) {
 				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
@@ -43,12 +43,12 @@ public class Game {
 				tabJoueur2[i].canMove(tabJoueur2, tabJoueur1);
 			}
 			
-			if (playerLoose(tabJoueur1)) {
+			if (Tab.playerLoose(tabJoueur1)) {
 				System.out.println("Le joueur 1 n'a plus de pions, il a perdu");
 				endGame = true;
 				break;
 			}
-			if (playerLoose(tabJoueur2)) {
+			if (Tab.playerLoose(tabJoueur2)) {
 				System.out.println("Le joueur 2 n'a plus de pions, il a perdu");
 				endGame = true;
 				break;
