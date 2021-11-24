@@ -6,7 +6,10 @@ import utilitaires.Utilitaires;
 public class Menu {
 	public static Pion[][] menu(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
-		
+		System.out.print("couleur du joueur 1 : ");
+		System.out.println(tabJoueur1[0].getCharacter());
+		System.out.print("couleur du joueur 2 : ");
+		System.out.println(tabJoueur2[0].getCharacter());
 		
 		Pion pionMoove = null;
 		int intChoosedPion;
