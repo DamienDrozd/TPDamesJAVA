@@ -1,5 +1,6 @@
 package game;
 
+import pion.King;
 import pion.Men;
 import pion.Pion;
 
@@ -27,7 +28,9 @@ public class Tab {
 	public static void isDame(Pion[] tabJoueur1, Pion[] tabJoueur2) {//transformation des pions en dames
 		for (int i = 0; i<tabJoueur2.length ; i++) {
 			if (tabJoueur2[i].getPos() >= 1 && tabJoueur2[i].getPos() <= 5) {
-				tabJoueur2[i] = new King(i+1,null, 0,  "O", "", 1 , null , null, false);
+				String couleur = tabJoueur2[i].getCharacter();
+				int pos = tabJoueur2[i].getPos();
+				tabJoueur2[i] = new King(pos,null, 0,  couleur, "", 8 , null , null, false);
 				tabJoueur2[i].setType("dame") ;
 			} 
 		}

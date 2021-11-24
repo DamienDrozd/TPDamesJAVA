@@ -10,7 +10,7 @@ public class King extends Pion {
 		super(pos, direction, nbCase, character, type, joueur, tabCanMoove, tabCanEat, isDead);
 		this.direction = direction;
 		this.nbCase = nbCase;
-		this.type = type;
+		this.type = type;<>
 	}
 
 	

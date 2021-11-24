@@ -5,19 +5,12 @@ import utilitaires.Utilitaires;
 
 public class IaPlay {
 	public static Pion[][] iaPlay(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-		
 			Pion pionMoove = null;
 			int intChoosedPion;
-			
 			while(pionMoove == null)
 			{
-				
 				intChoosedPion = (int) (Math.random() * ( 20 - 1 ));
 				boolean cantplay = false;
-				
-				//tabJoueur1[15].setTabCanMoove(new int[]{21,22});//provisoire
-				//tabJoueur1[15].setTabCanEat(new int[]{26,27});
-			
 				for (int i = 0;i<tabJoueur1.length; i++) {
 					for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
 						if (j.getTabCanEat() != null) {

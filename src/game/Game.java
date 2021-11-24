@@ -19,24 +19,20 @@ public class Game {
 		Pion[] tabJoueur2 = new Pion[nbPions];
 		
 		
-		int couleurInt = (int) (1 + Math.random() * ( 3-1 ));
-		//choix aléatoire des couleurs
 		
+		//choix aléatoire des couleurs
+		int couleurInt = (int) (1 + Math.random() * ( 3-1 ));
 		for (int i=0;i<nbPions;i++) {
 			
 			if (couleurInt == 1) {
 				tabJoueur1[i] = new Men(i+1,null, 0,  "O", "", 1 , null , null, false);
 				tabJoueur2[i] = new Men(50-i,null, 0,  "X", "", 2, null , null, false);
-				
 			}
 			if (couleurInt == 2) {
 				tabJoueur2[i] = new Men(i+1,null, 0,  "O", "", 1 , null , null, false);
 				tabJoueur1[i] = new Men(50-i,null, 0,  "X", "", 2, null , null, false);
 			}
 		}
-		
-		
-		
 		String[] mapGame = new String[(tailleTabX*tailleTabY)/2];
 
 		
