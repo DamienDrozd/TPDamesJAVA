@@ -54,13 +54,13 @@ public class Game {
 				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 				tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
 				for (int nb : tabJoueur1[i].getTabCanMoove()) {
-					System.out.println(nb + " "+ tabJoueur1[i].getPos());
+					System.out.println(tabJoueur1[i].getPos() + " " + nb);
 				}
 				
 			}
 			for (int i = 0;i < tabJoueur2.length; i++) {
-				tabJoueur2[i].canEat(tabJoueur2, tabJoueur1);
-				tabJoueur2[i].canMove(tabJoueur2, tabJoueur1);
+				tabJoueur2[i].canEat(tabJoueur1, tabJoueur2);
+				tabJoueur2[i].canMove(tabJoueur1, tabJoueur2);
 			}
 			
 			if (Tab.playerLoose(tabJoueur1)) {
