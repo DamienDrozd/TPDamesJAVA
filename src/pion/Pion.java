@@ -108,15 +108,24 @@ public class Pion {
 							System.out.print(this.getPos());
 							System.out.println("test");
 							for (int j = 0; j < 19; j++){
-								if (this.getPos() - 5 == tabJoueur1[j].getPos() && this.getPos() - 5 == tabJoueur2[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
+								if (this.joueur = 1) {
+									if (this.getPos() - 5 == tabJoueur1[j].getPos() && this.getPos() - 5 == tabJoueur2[j].getPos()) {
+										this.setTabCanMoove(null);
+										return ;
 
+									} else {
+										can[0] = this.getPos() - 5;
+										this.setTabCanMoove(can);
+										return ;
+									}
 								} else {
-									can[0] = this.getPos() - 5;
+									can[0] = tabJoueur2[j].getPos() + 5;
 									this.setTabCanMoove(can);
 									return ;
 								}
+							}
+								}
+
 							}
 						} else if ((this.getPos() >=6 && this.getPos() <=9 ) && (this.getPos() >=16 && this.getPos() <=19 ) && (this.getPos() >=26 && this.getPos() <=29 ) && (this.getPos() >=36 && this.getPos() <=39 ) && (this.getPos() >=46 && this.getPos() <=49 )){
 							for (int j = 0; j < 19;j++){
@@ -152,24 +161,27 @@ public class Pion {
 					}
 				}
 
-				}else{
+				}
+				//-----------------------------------------------------------------------------------------------
+				else{
 				turn++;
 				for (int q = 0; q<tabJoueur2.length-1;q++) {
 					if (tabJoueur2[q].isDead != false ) {
+						this.setTabCanMoove(null);
+						return ;
+
+					} else {
+						can[0] = tabJoueur2[q].getPos() + 5;
+						this.setTabCanMoove(can);
+						return ;
+
+					}
+				}
 							//all of the border case
 						if(tabJoueur2[q].getPos()%10 == 0 || String.valueOf(tabJoueur2[q].getPos()) == "1"){
 							for (int j = 0; j < 19;j++){
 								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
-
-								} else {
-									can[0] = tabJoueur2[q].getPos() + 5;
-									this.setTabCanMoove(can);
-									return ;
-
-								}
-							}
+								
 						}
 							//all the case that can go left and right but with -4 or -5
 							else if ((tabJoueur2[q].getPos() >=6 && tabJoueur2[q].getPos() <=9 ) && (tabJoueur2[q].getPos() >=16 && tabJoueur2[q].getPos() <=19 ) && (tabJoueur2[q].getPos() >=26 && tabJoueur2[q].getPos() <=29 ) && (tabJoueur2[q].getPos() >=36 && tabJoueur2[q].getPos() <=39 ) && (tabJoueur2[q].getPos() >=46 && tabJoueur2[q].getPos() <=49 ))
