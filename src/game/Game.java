@@ -59,8 +59,8 @@ public class Game {
 				
 			}
 			for (int i = 0;i < tabJoueur2.length; i++) {
-				tabJoueur2[i].canEat(tabJoueur2, tabJoueur1);
-				tabJoueur2[i].canMove(tabJoueur2, tabJoueur1);
+				tabJoueur2[i].canEat(tabJoueur1, tabJoueur2);
+				tabJoueur2[i].canMove(tabJoueur1, tabJoueur2);
 			}
 			
 			if (Tab.playerLoose(tabJoueur1)) {
