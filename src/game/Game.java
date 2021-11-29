@@ -54,7 +54,7 @@ public class Game {
 				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 				tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
 				for (int nb : tabJoueur1[i].getTabCanMoove()) {
-					System.out.println(nb);
+					System.out.println(nb + " "+ tabJoueur1[i].getPos());
 				}
 				
 			}
