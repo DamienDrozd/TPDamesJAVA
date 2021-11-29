@@ -105,34 +105,17 @@ public class Pion {
 				
 //						System.out.println(this.getPos());
 						if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 ){
-							System.out.print(this.getPos());
-							System.out.println("test");
 							for (int j = 0; j < 19; j++){
-								if (this.joueur = 1) {
-									if (this.getPos() - 5 == tabJoueur1[j].getPos() && this.getPos() - 5 == tabJoueur2[j].getPos()) {
-										this.setTabCanMoove(null);
-										return ;
-
-									} else {
-										can[0] = this.getPos() - 5;
-										this.setTabCanMoove(can);
-										return ;
-									}
-								} else {
-									can[0] = tabJoueur2[j].getPos() + 5;
+								if (this.getPos() - 5 != tabJoueur1[j].getPos() && this.getPos() - 5 != tabJoueur2[j].getPos()) {
+									
+									can[0] = this.getPos() - 5;
 									this.setTabCanMoove(can);
 									return ;
 								}
 							}
-								}
-
-							}
-						} else if ((this.getPos() >=6 && this.getPos() <=9 ) && (this.getPos() >=16 && this.getPos() <=19 ) && (this.getPos() >=26 && this.getPos() <=29 ) && (this.getPos() >=36 && this.getPos() <=39 ) && (this.getPos() >=46 && this.getPos() <=49 )){
+						} else if ((this.getPos()%10 > 5) ){
 							for (int j = 0; j < 19;j++){
-								if (this.getPos() - 5 == tabJoueur1[j].getPos() && this.getPos() - 5 == tabJoueur2[j].getPos() && this.getPos() - 4 == tabJoueur1[j].getPos() && this.getPos() - 4 == tabJoueur2[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
-								}
+								
 								if (this.getPos() - 5 != tabJoueur1[j].getPos() && this.getPos() - 5 != tabJoueur2[j].getPos()) {
 										can[0] = this.getPos() - 5;
 										if ( this.getPos() - 4 != tabJoueur1[j].getPos() && this.getPos() - 4 == tabJoueur2[j].getPos()){
@@ -142,12 +125,8 @@ public class Pion {
 								return ;
 								}
 							}
-						} else if (this.getPos() >=12 && this.getPos() <=15 || this.getPos() >=22 && this.getPos() <=25 || this.getPos() >=32 && this.getPos() <=35 || this.getPos() >=42 && this.getPos() <=45) {
+						} else if (this.getPos()%10 <= 5) {
 							for (int j = 0; j < 19;j++){
-								if (this.getPos() - 5 == tabJoueur1[j].getPos() && this.getPos() - 5 == tabJoueur2[j].getPos() && this.getPos() - 6 == tabJoueur1[j].getPos() && this.getPos() - 6 == tabJoueur2[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
-								}
 							if (this.getPos() - 5 != tabJoueur1[j].getPos() || this.getPos() - 5 != tabJoueur2[j].getPos()) {
 								can[0] = this.getPos() - 5;
 								if (this.getPos() - 6 != tabJoueur1[j].getPos() && this.getPos() - 6 != tabJoueur2[j].getPos()){
@@ -161,70 +140,66 @@ public class Pion {
 					}
 				}
 
-				}
-				//-----------------------------------------------------------------------------------------------
-				else{
-				turn++;
-				for (int q = 0; q<tabJoueur2.length-1;q++) {
-					if (tabJoueur2[q].isDead != false ) {
-						this.setTabCanMoove(null);
-						return ;
-
-					} else {
-						can[0] = tabJoueur2[q].getPos() + 5;
-						this.setTabCanMoove(can);
-						return ;
-
-					}
-				}
-							//all of the border case
-						if(tabJoueur2[q].getPos()%10 == 0 || String.valueOf(tabJoueur2[q].getPos()) == "1"){
-							for (int j = 0; j < 19;j++){
-								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos()) {
-								
-						}
-							//all the case that can go left and right but with -4 or -5
-							else if ((tabJoueur2[q].getPos() >=6 && tabJoueur2[q].getPos() <=9 ) && (tabJoueur2[q].getPos() >=16 && tabJoueur2[q].getPos() <=19 ) && (tabJoueur2[q].getPos() >=26 && tabJoueur2[q].getPos() <=29 ) && (tabJoueur2[q].getPos() >=36 && tabJoueur2[q].getPos() <=39 ) && (tabJoueur2[q].getPos() >=46 && tabJoueur2[q].getPos() <=49 ))
-							for (int j = 0; j < 19;j++){
-								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos() && tabJoueur2[q].getPos() + 4 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 4 == tabJoueur1[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
-
-								}
-							if (tabJoueur2[q].getPos() + 5 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 != tabJoueur1[j].getPos()) {
-								can[0] = tabJoueur2[q].getPos() + 5;
-							
-								if (tabJoueur2[q].getPos() + 4 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 4 != tabJoueur1[j].getPos()) {
-									can[1] = tabJoueur2[q].getPos() + 4;
-								}
-								this.setTabCanMoove(can);
-								return ;
-
-						}
-							}
-							else if (tabJoueur2[q].getPos() >=12 && tabJoueur2[q].getPos() <=15 || tabJoueur2[q].getPos() >=22 && tabJoueur2[q].getPos() <=25 || tabJoueur2[q].getPos() >=32 && tabJoueur2[q].getPos() <=35 || tabJoueur2[q].getPos() >=42 && tabJoueur2[q].getPos() <=45)
-							
-							for (int j = 0; j < 19;j++){
-								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos() && tabJoueur2[q].getPos() + 6 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 6 == tabJoueur1[j].getPos()) {
-									this.setTabCanMoove(null);
-									return ;
-
-								}
-							if (tabJoueur2[q].getPos() + 5 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 != tabJoueur1[j].getPos()) {
-								can[0] = tabJoueur2[q].getPos() + 5;
-								if (tabJoueur2[q].getPos() + 6 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 6 != tabJoueur1[j].getPos()){
-									can[1] = tabJoueur2[q].getPos() + 6;
-								}
-								this.setTabCanMoove(can);
-								return ;
-
-						}
-						}
-					}
-				}
-				return ;
-				
-			}
+//				}else{
+//				turn++;
+//				for (int q = 0; q<tabJoueur2.length-1;q++) {
+//					if (tabJoueur2[q].isDead != false ) {
+//							//all of the border case
+//						if(tabJoueur2[q].getPos()%10 == 0 || String.valueOf(tabJoueur2[q].getPos()) == "1"){
+//							for (int j = 0; j < 19;j++){
+//								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos()) {
+//									this.setTabCanMoove(null);
+//									return ;
+//
+//								} else {
+//									can[0] = tabJoueur2[q].getPos() + 5;
+//									this.setTabCanMoove(can);
+//									return ;
+//
+//								}
+//							}
+//						}
+//							//all the case that can go left and right but with -4 or -5
+//							else if ((tabJoueur2[q].getPos() >=6 && tabJoueur2[q].getPos() <=9 ) && (tabJoueur2[q].getPos() >=16 && tabJoueur2[q].getPos() <=19 ) && (tabJoueur2[q].getPos() >=26 && tabJoueur2[q].getPos() <=29 ) && (tabJoueur2[q].getPos() >=36 && tabJoueur2[q].getPos() <=39 ) && (tabJoueur2[q].getPos() >=46 && tabJoueur2[q].getPos() <=49 ))
+//							for (int j = 0; j < 19;j++){
+//								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos() && tabJoueur2[q].getPos() + 4 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 4 == tabJoueur1[j].getPos()) {
+//									this.setTabCanMoove(null);
+//									return ;
+//
+//								}
+//							if (tabJoueur2[q].getPos() + 5 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 != tabJoueur1[j].getPos()) {
+//								can[0] = tabJoueur2[q].getPos() + 5;
+//							
+//								if (tabJoueur2[q].getPos() + 4 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 4 != tabJoueur1[j].getPos()) {
+//									can[1] = tabJoueur2[q].getPos() + 4;
+//								}
+//								this.setTabCanMoove(can);
+//								return ;
+//
+//						}
+//							}
+//							else if (tabJoueur2[q].getPos() >=12 && tabJoueur2[q].getPos() <=15 || tabJoueur2[q].getPos() >=22 && tabJoueur2[q].getPos() <=25 || tabJoueur2[q].getPos() >=32 && tabJoueur2[q].getPos() <=35 || tabJoueur2[q].getPos() >=42 && tabJoueur2[q].getPos() <=45)
+//							
+//							for (int j = 0; j < 19;j++){
+//								if (tabJoueur2[q].getPos() + 5 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 == tabJoueur1[j].getPos() && tabJoueur2[q].getPos() + 6 == tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 6 == tabJoueur1[j].getPos()) {
+//									this.setTabCanMoove(null);
+//									return ;
+//
+//								}
+//							if (tabJoueur2[q].getPos() + 5 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 5 != tabJoueur1[j].getPos()) {
+//								can[0] = tabJoueur2[q].getPos() + 5;
+//								if (tabJoueur2[q].getPos() + 6 != tabJoueur2[j].getPos() && tabJoueur2[q].getPos() + 6 != tabJoueur1[j].getPos()){
+//									can[1] = tabJoueur2[q].getPos() + 6;
+//								}
+//								this.setTabCanMoove(can);
+//								return ;
+//
+//						}
+//						}
+//					}
+		}
+	this.setTabCanMoove(can);
+}
 
 
 	        // for (Pion joueur : tabJoueur1) {
@@ -248,8 +223,7 @@ public class Pion {
 			// 	} 
 			// }
 			
-			this.setTabCanMoove(can);
-		}
+			
     	
 
 	
