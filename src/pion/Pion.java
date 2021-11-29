@@ -94,10 +94,10 @@ public class Pion {
 
 
 	
-	public int canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+	public int[] canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		int[] can = new int[2];
 		int turn = 1;
-			if (turn%2 = 1){
+			if (turn%2 == 1){
 				turn++;
 				for (int i = 0; i<tabJoueur1.length-1;i++) {
 					if (tabJoueur1[i].isDead != false ) {
