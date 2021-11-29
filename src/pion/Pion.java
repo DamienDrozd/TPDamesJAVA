@@ -93,62 +93,224 @@ public class Pion {
 
 
 
-	/**
-	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-		boolean can = false;
-		for(int i = 0; i<50;i++) {
-	        for (Pion joueur : tabJoueur1) {
-				if (this.isDead == false && this.joueur1 == true && (newpos[0] < this.pos)){
-					this.pos = newpos[0];
-					can = true;
-				} else {
-					if (this.isDead == false && this.joueur1 == false && (newpos[0] > this.pos));
-					this.pos = newpos[0];
-					can = true;
-				} 
+	
+	public int canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+		int[] can = new int[2];
+		int turn = 1;
+			if (turn%2 = 1){
+				turn++;
+				for (int i = 0; i<tabJoueur1.length-1;i++) {
+					if (tabJoueur1[i].isDead != false ) {
+						switch (tabJoueur1[i].pos) {
+							//all of the border case
+							case 41:
+							case 31:
+							case 21:
+							case 11:
+							case 1:
+							case 50:
+							case 40:
+							case 30:
+							case 20:
+							case 10:
+							if (tabJoueur1[i].pos - 5 != tabJoueur1[i].pos && tabJoueur1[i].pos - 5 != tabJoueur2[i].pos) {
+								can = tabJoueur1[i].pos - 5;
+								return can;
+							}
+							//all the case that can go left and right but with -4 or -5
+							case 6:
+							case 7:
+							case 8:
+							case 9:
+							case 16:
+							case 17:
+							case 18:
+							case 19:
+							case 26:
+							case 27:
+							case 28:
+							case 29:
+							case 36:
+							case 37:
+							case 38:
+							case 39:
+							case 46:
+							case 47:
+							case 48:
+							case 49:
+							if (tabJoueur1[i].pos - 5 != tabJoueur1[i].pos && tabJoueur1[i].pos - 5 != tabJoueur2[i].pos) {
+								can[0] = tabJoueur1[i].pos - 5;
+							
+								if (tabJoueur1[i].pos - 4 != tabJoueur1[i].pos && tabJoueur1[i].pos - 4 != tabJoueur2[i].pos) {
+									can[1] = tabJoueur1[i].pos - 4;
+								}
+							return can;
+							break;
+						}
+							
+							case 12:
+							case 13:
+							case 14:
+							case 15:
+							case 22:
+							case 23:
+							case 24:
+							case 25:
+							case 32:
+							case 33:
+							case 34:
+							case 35:
+							case 42:
+							case 43:
+							case 44:
+							case 45:
+							if (tabJoueur1[i].pos - 5 != tabJoueur1[i].pos && tabJoueur1[i].pos - 5 != tabJoueur2[i].pos) {
+								can[0] = tabJoueur1[i].pos - 5;
+								if (tabJoueur1[i].pos - 6 != tabJoueur1[i].pos && tabJoueur1[i].pos - 6 != tabJoueur2[i].pos){
+									can[1] = tabJoueur1[i].pos - 6;
+								}
+							return can;
+							break;
+						}
+							
+
+						}
+					}
+				}
 			}
-			for (Pion joueur : tabJoueur2) {
-				if (this.isDead == false && this.joueur1 == true && (newpos[0] < this.pos)){
-					this.pos = newpos[0];
-					can = true;
-				} else {
-					if (this.isDead == false &&this.joueur1 == false && (newpos[0] > this.pos));
-					this.pos = newpos[0];
-					can = true;
-				} 
+			else{
+				turn++;
+				for (int i = 0; i<tabJoueur2.length-1;i++) {
+					if (tabJoueur2[i].isDead != false ) {
+						switch (tabJoueur2[i].pos) {
+							//all of the border case
+							case 41:
+							case 31:
+							case 21:
+							case 11:
+							case 1:
+							case 50:
+							case 40:
+							case 30:
+							case 20:
+							case 10:
+							if (tabJoueur2[i].pos + 5 != tabJoueur2[i].pos && tabJoueur2[i].pos + 5 != tabJoueur1[i].pos) {
+								can = tabJoueur2[i].pos - 5;
+								return can;
+							}
+							//all the case that can go left and right but with -4 or -5
+							case 6:
+							case 7:
+							case 8:
+							case 9:
+							case 16:
+							case 17:
+							case 18:
+							case 19:
+							case 26:
+							case 27:
+							case 28:
+							case 29:
+							case 36:
+							case 37:
+							case 38:
+							case 39:
+							case 46:
+							case 47:
+							case 48:
+							case 49:
+							if (tabJoueur2[i].pos + 5 != tabJoueur2[i].pos && tabJoueur2[i].pos + 5 != tabJoueur1[i].pos) {
+								can[0] = tabJoueur1[i].pos - 5;
+							
+								if (tabJoueur2[i].pos + 4 != tabJoueur2[i].pos && tabJoueur2[i].pos + 4 != tabJoueur1[i].pos) {
+									can[1] = tabJoueur2[i].pos + 4;
+								}
+							return can;
+							break;
+						}
+							
+							case 12:
+							case 13:
+							case 14:
+							case 15:
+							case 22:
+							case 23:
+							case 24:
+							case 25:
+							case 32:
+							case 33:
+							case 34:
+							case 35:
+							case 42:
+							case 43:
+							case 44:
+							case 45:
+							if (tabJoueur2[i].pos + 5 != tabJoueur2[i].pos && tabJoueur2[i].pos + 5 != tabJoueur1[i].pos) {
+								can[0] = tabJoueur2[i].pos + 5;
+								if (tabJoueur2[i].pos + 6 != tabJoueur2[i].pos && tabJoueur2[i].pos + 6 != tabJoueur1[i].pos){
+									can[1] = tabJoueur2[i].pos + 6;
+								}
+							return can;
+							break;
+						}
+						}
+					}
+				}
 			}
+
+
+	        // for (Pion joueur : tabJoueur1) {
+			// 	if (this.isDead == false && this.joueur == '1' && (newpos[0] < this.pos)){
+			// 		this.pos = newpos[0];
+			// 		can = true;
+			// 	} else {
+			// 		if (this.isDead == false && this.joueur == '1' && (newpos[0] > this.pos));
+			// 		this.pos = newpos[0];
+			// 		can = true;
+			// 	} 
+			// }
+			// for (Pion joueur : tabJoueur2) {
+			// 	if (this.isDead == false && this.joueur == '2' && (newpos[0] < this.pos)){
+			// 		this.pos = newpos[0];
+			// 		can = true;
+			// 	} else {
+			// 		if (this.isDead == false && this.joueur == '2' && (newpos[0] > this.pos));
+			// 		this.pos = newpos[0];
+			// 		can = true;
+			// 	} 
+			// }
 		}
     	this.tabCanMoove = null;
     }
-	 */
-	/**
-	//	non fonctionnel encore 
-	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-    //     for (Pion joueur : tabJoueur1) {
-	// 	this.eat = false;
-    //     int [] posApresManger = this.getPosManger(cible);
-        
-    //     int[] oldPos = getPos();
-        
-    //     if(!cible.isInvicible() && plateau.estVide(posApresManger) && this.joueur != cible.joueur
-    //             && distanceValide(distanceAvec(cible))) {
-    //         setPos(cible.getPos());
 
-    //         if(this.canMove(posApresManger)) { 
-    //             cible.ate();
-    //             return true;
-    //         }
-    //         else {
-    //             setPos(oldPos);//on annule les changements
-    //             System.out.println("Erreur: impossible de manger vers cette case");
-    //             return false;}
-    //     } else {
-    //         //System.out.print("mangeage échoué");
-    //         return false;
-    //     }
+	
+		
+	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
+         for (Pion joueur : tabJoueur1) {
+	 	this.eat = false;
+        int [] posApresManger = this.getPosManger(cible);
+        
+         int[] oldPos = getPos();
+        
+         if(posApresManger) && this.joueur != cible.joueur
+                 && distanceValide(distanceAvec(cible))) {
+             setPos(cible.getPos());
+
+             if(this.canMove(posApresManger)) { 
+                 cible.ate();
+                 return true;
+             }
+             else {
+                 setPos(oldPos);//on annule les changements
+                 
+                 return false;}
+         } else {
+             //System.out.print("mangeage échoué");
+             return false;
+         }
         	
-	// 	}
-    //     this.tabCanEat = null;
+	 	}
+         this.tabCanEat = null;
      }
 
 
@@ -191,24 +353,4 @@ public class Pion {
 		}
 	}
 
-	 */
-	
-	
-	public int[] canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-		
-		return null;
-	}
-	
-	public int[] canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-		
-		return null;
-	}
-}
-	
-	
-
-
-
-
-
-	
+	 
