@@ -53,6 +53,10 @@ public class Game {
 			for (int i = 0;i < tabJoueur1.length; i++) {
 				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 				tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
+				for (int nb : tabJoueur1[i].getTabCanMoove()) {
+					System.out.println(nb);
+				}
+				
 			}
 			for (int i = 0;i < tabJoueur2.length; i++) {
 				tabJoueur2[i].canEat(tabJoueur2, tabJoueur1);
