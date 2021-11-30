@@ -49,14 +49,13 @@ public class Menu {
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
 					
-					
-<<<<<<< HEAD
+		
 					if (can(canEat)) {
 						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
-=======
+
 					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
 						canMove = canEat;//Le pion est forcï¿½ de manger un adversaire si il le peut
->>>>>>> 729c79c3c0d06765afe48ba8cd620d65697d46a6
+
 					}
 					if (can(canMove)) {
 						
@@ -149,8 +148,8 @@ public class Menu {
 			}
 		}
 		
-		System.out.println("Il reste "+ scoreJ1 + "pions au joueur 1");
-		System.out.println("Il reste "+ scoreJ2 + "pions au joueur 2");
+		System.out.println("Il reste "+ scoreJ1 + " pions au joueur 1");
+		System.out.println("Il reste "+ scoreJ2 + " pions au joueur 2");
 	}
 	
 }
