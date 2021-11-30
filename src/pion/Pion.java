@@ -107,15 +107,15 @@ public class Pion {
 						if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 ){
 							System.out.println("possible de bouger");
                             if (this.joueur == 1) {
-                            	if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
-									can[0] = this.getPos() + 5;
+                            	if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
+									can[0] = this.getPos() - 5;
 									this.setTabCanMoove(can);
 									return ;
 								}
                        
 							} else if (this.joueur == 2) {
-								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
-									can[0] = this.getPos() - 5;
+								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
+									can[0] = this.getPos() + 5;
 									this.setTabCanMoove(can);
 									return ;
 								}
@@ -127,15 +127,15 @@ public class Pion {
 				System.out.println("possible de bouger");
 				
                 if (this.joueur == 1) {
-                	if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
-						can[0] = this.getPos() + 5;
+                	if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
+						can[0] = this.getPos() - 5;
 						this.setTabCanMoove(can);
 						return ;
 					}
            
 				} else if (this.joueur == 2) {
-					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
-						can[0] = this.getPos() - 5;
+					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
+						can[0] = this.getPos() + 5;
 						this.setTabCanMoove(can);
 						return ;
 					}
@@ -146,19 +146,19 @@ public class Pion {
 			} else if (this.getPos()%10 > 5) {
 				System.out.println("possible de bouger");
 				if (this.joueur == 1) {
-                    if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
-						can[0] = this.getPos() + 5;
-						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != false){
-							can[1] = this.getPos() + 6;
+                    if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
+						can[0] = this.getPos() - 5;
+						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6)) != false){
+							can[1] = this.getPos() - 6;
 						}
 					this.setTabCanMoove(can);
 					return ;
 					}
 				} else if (this.joueur == 2) {
-                    if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
-							can[0] = this.getPos() - 5;
-						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != false){
-							can[1] = this.getPos() - 4;
+                    if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
+							can[0] = this.getPos() + 5;
+						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != false){
+							can[1] = this.getPos() + 4;
 						}
 					this.setTabCanMoove(can);
 					return ;
@@ -168,18 +168,18 @@ public class Pion {
 			} else if (this.getPos()%10 <= 5) {
 				System.out.println("possible de bouger");
 				if (this.joueur == 1) {
-					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != false) {
-						can[0] = this.getPos() + 4;
+					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != false) {
+						can[0] = this.getPos() - 4;
 					}
-					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false){
-						can[1] = this.getPos() + 5;
+					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false){
+						can[1] = this.getPos() - 5;
 					}
 				} else if (this.joueur == 2) {
-					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) {
-						can[0] = this.getPos() - 5;
+					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
+						can[0] = this.getPos() + 5;
 					}
-					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6)) != false){
-						can[1] = this.getPos() - 6;
+					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != false){
+						can[1] = this.getPos() + 6;
 					}
 					
 				}
