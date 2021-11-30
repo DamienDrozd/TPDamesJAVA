@@ -15,7 +15,7 @@ public class Menu {
 		int intChoosedPion;
 		while(pionMoove == null)
 		{
-			System.out.println("choisissez quel pion vous voulez déplacer");
+			System.out.println("choisissez quel pion vous voulez dï¿½placer");
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
 			for (int i = 0;i<tabJoueur1.length; i++) {
@@ -26,7 +26,7 @@ public class Menu {
 							cantplay = false;
 							break;
 						}
-						cantplay = true;// si un pion peut manger et qu'il n'est pas séléctionné alors le joueur ne peut pas jouer
+						cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
 					}
 				}
 				
@@ -50,12 +50,17 @@ public class Menu {
 					
 					
 					
+<<<<<<< HEAD
 					if (can(canEat)) {
 						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
+=======
+					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
+						canMove = canEat;//Le pion est forcï¿½ de manger un adversaire si il le peut
+>>>>>>> 729c79c3c0d06765afe48ba8cd620d65697d46a6
 					}
 					if (can(canMove)) {
 						
-						System.out.println("choisissez ou vous voulez déplacer ce pion");
+						System.out.println("choisissez ou vous voulez dï¿½placer ce pion");
 						int intNewPosPion = Utilitaires.readInt();
 						
 						for (int j : canMove) {
@@ -77,15 +82,15 @@ public class Menu {
 								return tabReturn;
 							}
 						}
-						System.out.println("ce pion ne peut pas être déplacé a cet endroit");
+						System.out.println("ce pion ne peut pas ï¿½tre dï¿½placï¿½ a cet endroit");
 						continue;
 					} else {
-						System.out.println("ce pion ne peut pas être déplacé");
+						System.out.println("ce pion ne peut pas ï¿½tre dï¿½placï¿½");
 						continue;
 					}
 				}
 			}
-			System.out.println("ce pion ne peut pas être déplacé");
+			System.out.println("ce pion ne peut pas ï¿½tre dï¿½placï¿½");
 		}
 		return null;
 	}
