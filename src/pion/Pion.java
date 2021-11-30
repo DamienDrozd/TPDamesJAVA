@@ -105,7 +105,6 @@ public class Pion {
 
 //---------------------------------------------------- pour les pions sur le cot�
 						if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 ){
-							System.out.print("test");
                             if (this.joueur == 1) {
                             	if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != false) {
 									can[0] = this.getPos() + 5;

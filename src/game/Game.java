@@ -25,12 +25,12 @@ public class Game {
 		for (int i=0;i<nbPions;i++) {
 			
 			if (couleurInt == 1) {
-				tabJoueur1[i] = new Men(i+1,null, 0,  "o", "", 1 , null , null, false);
-				tabJoueur2[i] = new Men(50-i,null, 0,  "x", "", 2, null , null, false);
+				tabJoueur1[i] = new Men(50-i,null, 0,  "o", "", 1 , null , null, false);
+				tabJoueur2[i] = new Men(i+1,null, 0,  "x", "", 2, null , null, false);
 			}
 			if (couleurInt == 2) {
-				tabJoueur2[i] = new Men(i+1,null, 0,  "o", "", 2 , null , null, false);
 				tabJoueur1[i] = new Men(50-i,null, 0,  "x", "", 1, null , null, false);
+				tabJoueur2[i] = new Men(i+1,null, 0,  "o", "", 2 , null , null, false);
 			}
 		}
 		String[] mapGame = new String[(tailleTabX*tailleTabY)/2];
