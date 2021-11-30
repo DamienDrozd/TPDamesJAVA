@@ -30,15 +30,7 @@ public class Menu {
 					}
 				}
 				
-				System.out.print("tabeat : ");
-				for (int nb : tabJoueur1[i].getTabCanEat()) {
-					System.out.print(nb + ", ");
-				}
-				System.out.print("\n");
-				System.out.print("tabmove : ");
-				for (int nb : tabJoueur1[i].getTabCanMoove()) {
-					System.out.print(nb + ", ");
-				}
+				
 
 				
 				
@@ -47,6 +39,17 @@ public class Menu {
 					//test can mooved
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
+					
+					System.out.print("tabeat : ");
+					for (int nb : tabJoueur1[i].getTabCanEat()) {
+						System.out.print(nb + ", ");
+					}
+					System.out.print("\n");
+					System.out.print("tabmove : ");
+					for (int nb : tabJoueur1[i].getTabCanMoove()) {
+						System.out.print(nb + ", ");
+					}
+					System.out.print("\n");
 					
 					
 		
@@ -81,15 +84,17 @@ public class Menu {
 								return tabReturn;
 							}
 						}
-						System.out.println("ce pion ne peut pas �tre d�plac� a cet endroit");
+						System.out.println("ce pion ne peut pas etre deplace a cet endroit");
 						continue;
 					} else {
-						System.out.println("ce pion ne peut pas �tre d�plac�");
+						System.out.println("ce pion ne peut pas etre deplace");
 						continue;
 					}
 				}
+					System.out.println("ce pion ne peut pas etre deplace");
 			}
-			System.out.println("ce pion ne peut pas �tre d�plac�");
+			
+		}
 		}
 		return null;
 	}
