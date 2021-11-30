@@ -30,7 +30,7 @@ public class Tab {
 			if (tabJoueur2[i].getPos() >= 1 && tabJoueur2[i].getPos() <= 5) {
 				String couleur = tabJoueur2[i].getCharacter();
 				int pos = tabJoueur2[i].getPos();
-				tabJoueur2[i] = new King(pos,null, 0,  couleur, "", 8 , null , null, false);
+				tabJoueur2[i] = new King(pos,null, 0,  couleur.toUpperCase(), "", 8 , null , null, false);
 				tabJoueur2[i].setType("dame") ;
 			} 
 		}

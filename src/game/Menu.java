@@ -29,6 +29,17 @@ public class Menu {
 					}
 				}
 				
+				System.out.print("tabeat : ");
+				for (int nb : tabJoueur1[i].getTabCanEat()) {
+					System.out.print(nb + ", ");
+				}
+				System.out.print("\n");
+				System.out.print("tabmove : ");
+				for (int nb : tabJoueur1[i].getTabCanMoove()) {
+					System.out.print(nb + ", ");
+				}
+
+				
 				
 				
 				if (tabJoueur1[i].getPos() == intChoosedPion && cantplay == false) {
@@ -41,7 +52,6 @@ public class Menu {
 					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
 						canMove = canEat;//Le pion est forc� de manger un adversaire si il le peut
 					}
-					System.out.println("tabeat : " + canEat[0] + ", "+ canEat[1]);
 					if (canMove != null && (canMove[0] != 0 || canMove[1] != 0)) {
 						
 						System.out.println("choisissez ou vous voulez d�placer ce pion");
