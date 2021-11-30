@@ -185,6 +185,7 @@ public class Pion {
 			}
 		}
 	}
+	}
 					
 	this.setTabCanMoove(can);
 }
@@ -297,7 +298,7 @@ public class Pion {
 					 }
 				 }
 				 
-				 if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == false && this.getPos() + 5) != prohibited[i]) {
+				 if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == false && (this.getPos() + 5) != prohibited[i]) {
 					 if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 9)) == false) {
 						 can[2] = this.getPos() + 9;
 					 }
