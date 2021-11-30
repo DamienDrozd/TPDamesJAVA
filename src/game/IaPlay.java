@@ -36,7 +36,7 @@ public class IaPlay {
 							while (intNewPosPion == 0) {
 								intNewPosPion = canMove[(int)(Math.random() * ( canMove.length ))];
 								tabJoueur1[i].setPos(intNewPosPion);
-								System.out.println(intNewPosPion);
+								
 								
 								
 							}

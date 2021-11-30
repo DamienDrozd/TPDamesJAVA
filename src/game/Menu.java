@@ -6,6 +6,7 @@ import utilitaires.Utilitaires;
 public class Menu {
 	public static Pion[][] menu(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
+		Score(tabJoueur1, tabJoueur2);
 		System.out.print("couleur du joueur 1 : ");
 		System.out.println(tabJoueur1[0].getCharacter());
 		System.out.print("couleur du joueur 2 : ");
@@ -20,7 +21,7 @@ public class Menu {
 			for (int i = 0;i<tabJoueur1.length; i++) {
 				
 				for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-					if (j.getTabCanEat() != null && (j.getTabCanEat()[0] != 0 || j.getTabCanEat()[1] != 0)) {
+					if (can(j.getTabCanEat()) == false) {
 						if (intChoosedPion == j.getPos()) {
 							cantplay = false;
 							break;
@@ -49,10 +50,10 @@ public class Menu {
 					
 					
 					
-					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
+					if (can(canEat)) {
 						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
 					}
-					if (canMove != null && (canMove[0] != 0 || canMove[1] != 0)) {
+					if (can(canMove)) {
 						
 						System.out.println("choisissez ou vous voulez déplacer ce pion");
 						int intNewPosPion = Utilitaires.readInt();
@@ -60,6 +61,16 @@ public class Menu {
 						for (int j : canMove) {
 							
 							if (j == intNewPosPion) {
+								
+								if (can(canEat)) {
+									int oldPos = tabJoueur1[i].getPos();
+									//tuer le pion mangé----------------------------------------------------
+									
+									
+									tabJoueur1[i].setPos(intNewPosPion);
+									Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
+									menu(tabJoueur1, tabJoueur2);
+								}
 								
 								tabJoueur1[i].setPos(intNewPosPion);
 								Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
@@ -106,4 +117,35 @@ public class Menu {
 		
 		return 0;
 	}
+
+	public static boolean can(int[] canMove)
+	{
+		for (int nb : canMove) {
+			if (nb != 0) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static void Score(Pion[] tabJoueur1, Pion[] tabJoueur2)
+	{
+		int scoreJ1 = 0;
+		int scoreJ2 = 0;
+
+		for (Pion pion : tabJoueur1) {
+			if (pion.isDead() == false) {
+				scoreJ1++;
+			}
+		}
+		for (Pion pion : tabJoueur2) {
+			if (pion.isDead() == false) {
+				scoreJ2++;
+			}
+		}
+		
+		System.out.println("Il reste "+ scoreJ1 + "pions au joueur 1");
+		System.out.println("Il reste "+ scoreJ2 + "pions au joueur 2");
+	}
+	
 }
