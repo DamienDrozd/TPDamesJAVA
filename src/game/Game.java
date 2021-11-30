@@ -76,6 +76,8 @@ public class Game {
 			PrintGame.printGame(mapGame);
 			
 			
+			
+			
 			if (couleurInt == 1) {
 				//joueur 1 en premier
 				
