@@ -41,7 +41,7 @@ public class Menu {
 					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
 						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
 					}
-
+					System.out.println("tabeat : " + canEat[0] + ", "+ canEat[1]);
 					if (canMove != null && (canMove[0] != 0 || canMove[1] != 0)) {
 						
 						System.out.println("choisissez ou vous voulez déplacer ce pion");
