@@ -25,12 +25,12 @@ public class Game {
 		for (int i=0;i<nbPions;i++) {
 			
 			if (couleurInt == 1) {
-				tabJoueur1[i] = new Men(i+1,null, 0,  "O", "", 1 , null , null, false);
-				tabJoueur2[i] = new Men(50-i,null, 0,  "X", "", 2, null , null, false);
+				tabJoueur1[i] = new Men(i+1,null, 0,  "o", "", 1 , null , null, false);
+				tabJoueur2[i] = new Men(50-i,null, 0,  "x", "", 2, null , null, false);
 			}
 			if (couleurInt == 2) {
-				tabJoueur2[i] = new Men(i+1,null, 0,  "O", "", 1 , null , null, false);
-				tabJoueur1[i] = new Men(50-i,null, 0,  "X", "", 2, null , null, false);
+				tabJoueur2[i] = new Men(i+1,null, 0,  "o", "", 1 , null , null, false);
+				tabJoueur1[i] = new Men(50-i,null, 0,  "x", "", 2, null , null, false);
 			}
 		}
 		String[] mapGame = new String[(tailleTabX*tailleTabY)/2];
@@ -53,9 +53,6 @@ public class Game {
 			for (int i = 0;i < tabJoueur1.length; i++) {
 				tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 				tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
-				for (int nb : tabJoueur1[i].getTabCanMoove()) {
-					System.out.println(tabJoueur1[i].getPos() + " " + nb);
-				}
 				
 			}
 			for (int i = 0;i < tabJoueur2.length; i++) {
@@ -85,6 +82,10 @@ public class Game {
 				System.out.println("Tour du joueur 1:");
 				Menu.menu(tabJoueur1, tabJoueur2);
 				
+				mapGame = Tab.remplirTab(mapGame, tabJoueur1, tabJoueur2);
+				
+				PrintGame.printGame(mapGame);
+				
 				System.out.println("Tour du joueur 2:");
 				if (choixMode == 1) {
 					IaPlay.iaPlay(tabJoueur1, tabJoueur2);
@@ -93,20 +94,20 @@ public class Game {
 					Menu.menu(tabJoueur2, tabJoueur1);
 				}
 			}
-				
-			
-				
-			
 			if (couleurInt == 2) {
 				//joueur 2 en premier
 				
 				System.out.println("Tour du joueur 2:");
 				if (choixMode == 1) {
-					Menu.menu(tabJoueur2, tabJoueur1);
+					IaPlay.iaPlay(tabJoueur2, tabJoueur1);
 				}
 				if (choixMode == 2) {
-					IaPlay.iaPlay(tabJoueur1, tabJoueur2);
+					Menu.menu(tabJoueur2, tabJoueur1);
 				}
+				
+				mapGame = Tab.remplirTab(mapGame, tabJoueur1, tabJoueur2);
+				
+				PrintGame.printGame(mapGame);
 				
 				
 				System.out.println("Tour du joueur 1:");
