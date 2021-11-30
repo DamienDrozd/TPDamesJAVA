@@ -17,11 +17,10 @@ public class Menu {
 			System.out.println("choisissez quel pion vous voulez déplacer");
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
-			//tabJoueur1[15].setTabCanMoove(new int[]{21,22});//provisoire
-			//tabJoueur1[15].setTabCanEat(new int[]{26,27});
 			for (int i = 0;i<tabJoueur1.length; i++) {
+				
 				for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-					if (j.getTabCanEat() != null) {
+					if (j.getTabCanEat() != null && (j.getTabCanEat()[0] != 0 || j.getTabCanEat()[1] != 0)) {
 						if (intChoosedPion == j.getPos()) {
 							cantplay = false;
 							break;
@@ -29,15 +28,21 @@ public class Menu {
 						cantplay = true;// si un pion peut manger et qu'il n'est pas séléctionné alors le joueur ne peut pas jouer
 					}
 				}
+				
+				
+				
 				if (tabJoueur1[i].getPos() == intChoosedPion && cantplay == false) {
 					//test can mooved
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
-					if (canEat != null) {
+					
+					
+					if (canEat != null && (canEat[0] != 0 || canEat[1] != 0)) {
 						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
 					}
-					if (canMove != null) {
+
+					if (canMove != null && (canMove[0] != 0 || canMove[1] != 0)) {
 						
 						System.out.println("choisissez ou vous voulez déplacer ce pion");
 						int intNewPosPion = Utilitaires.readInt();
