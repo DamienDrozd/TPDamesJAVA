@@ -111,6 +111,8 @@ public class Pion {
 	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		int[] can = new int[2];
 		boolean pas = true;
+		int posND = 0;
+		int[] prohibited = new int[] {1, 11 , 21 , 31 , 41, 10, 20, 30, 40 , 50};
 		
 	for (int i = 0; i<tabJoueur1.length-1;i++) {
 		if (this.isDead == false ) {
@@ -205,39 +207,45 @@ public class Pion {
 				}
 			} 
 //-------------------------------------Pour les deplacements des dames--------------------------------------------
-			// else if (this.getType == "dame")
-			// {	
-			// 	if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 )
-			// 	{
-			// 		if (this.joueur == 1) 
-			// 		{
-			// 			while (pas != false)
-			// 			{
-			// 			if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) 
-			// 			{
+			else if (this.getType == "dame")
+			{	
+				if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 )
+				{
+					if (this.joueur == 1) 
+					{
+						
+							for (int i = 0; i < prohibited.length; i++)
+							{
+								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false && ) 
+								{
+									can[0] = this.getPos() - 5;
+
+									while (pas != false)
+									{
+
+										if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false && (this.getPos() - 9) != prohibited[i])
+										{
+											can[1] = this.getPos() - 9;
+										} 
+										else
+										{
+											pas = false;
+											break;
+										}
+									}
+								}
+							}
+						this.setTabCanMoove(can);
+						System.out.print(this.getPos());
+						return ;
 
 
-			// 				if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false)
-			// 				{
+						
 
-			// 				} 
-			// 				else
-			// 				{
-			// 					pas = false;
-			// 					break;
-			// 				}
-			// 			}
-			// 			this.setTabCanMoove(can);
-			// 			System.out.print(this.getPos());
-			// 			return ;
-
-
-			// 			}
-
-			// 		}
-			// 	}
+					}
+				}
 	
-			// }			
+			}			
 		this.setTabCanMoove(can);
 		}
 	}
