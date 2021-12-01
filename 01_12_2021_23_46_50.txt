@@ -1,0 +1,7 @@
+Déroulement de la partie
+Tour 1 :
+Joueur 2 : 19 > 24
+Joueur 1 : 33  > 28
+Tour 2 :
+Joueur 2 : 24 > 29
+Tour 3 :

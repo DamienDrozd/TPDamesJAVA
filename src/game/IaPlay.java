@@ -20,7 +20,6 @@ public class IaPlay {
 				boolean cantplay = false;
 
 					for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-						System.out.println(j.getPos());
 						
 						if (Menu.canEat(j.getMapCanEat()) == true) {
 							
@@ -43,25 +42,23 @@ public class IaPlay {
 						int intNewPosPion = 0;
 						Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 						if (Menu.canEat(canEat)) {
+							
 							while (intNewPosPion == 0) {
-								ArrayList<Integer> tab = null;
 								if (canEat.size() != 0) {
 									int j = 0;
-									int k = (int)(Math.random() * ( canEat.size());
+									int k = (int)(Math.random() * ( canEat.size()));
 									
 									for (int i : canEat.keySet()) {
 										  j++;
+										  System.out.println(k);
+										  System.out.println(j);
 										  if (j == k) {
-											  tab = canEat.get(i);
+											  intNewPosPion = i;
 										  }
 									}
 								}
-								intNewPosPion = canEat.get(tab.getKey());
 
-								if (intNewPosPion == 0) {
-									continue;
-								}
-								if (Menu.canEat(canEat)) {
+								
 									
 									for (Map.Entry<Integer, ArrayList<Integer>> nb : canEat.entrySet()) {
 										
@@ -94,7 +91,7 @@ public class IaPlay {
 //												menu(tabJoueur1, tabJoueur2);
 //											}
 										}
-									}
+									
 								}
 							}
 							
