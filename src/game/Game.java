@@ -1,6 +1,13 @@
 package game;
 
 import pion.Pion;
+import java.util.Calendar;
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import pion.Men;
 import pion.King;
 import utilitaires.Utilitaires;
@@ -10,6 +17,10 @@ public class Game {
 	static int tailleTabX = 10;
     static int tailleTabY = 10;
     static int nbPions = 20;
+ // current date
+    static DateFormat dateFormat = new SimpleDateFormat("dd_MM_yyyy_HH_mm_ss");
+    static Date date = new Date();        
+    static String dateStr = dateFormat.format(date);
     
 	
 	public static void startGame() {
@@ -17,6 +28,10 @@ public class Game {
 		
 		Pion[] tabJoueur1 = new Pion[nbPions];
 		Pion[] tabJoueur2 = new Pion[nbPions];
+		
+		Utilitaires.createFile(Game.dateStr);
+		
+		int nbTour = 0;
 		
 		
 		
@@ -47,6 +62,11 @@ public class Game {
 		}
 		
 		while(endGame != true) {
+			
+			nbTour++;
+			
+			Utilitaires.addFile(dateStr, "Tour " + nbTour + " :\n");
+
 			
 			Tab.isDame(tabJoueur1,tabJoueur2);
 			
@@ -90,7 +110,7 @@ public class Game {
 				
 				System.out.println("Tour du joueur 2:");
 				if (choixMode == 1) {
-					IaPlay.iaPlay(tabJoueur1, tabJoueur2);
+					IaPlay.iaPlay(tabJoueur2, tabJoueur1);
 				}
 				if (choixMode == 2) {
 					Menu.menu(tabJoueur2, tabJoueur1);

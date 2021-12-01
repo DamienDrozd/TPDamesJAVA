@@ -1,0 +1,6 @@
+Déroulement de la partie
+Tour 1 :
+Joueur 817 > 22
+Joueur 1 : 32  > 26
+Tour 2 :
+Joueur 822 > 27

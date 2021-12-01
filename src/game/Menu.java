@@ -6,6 +6,11 @@ import utilitaires.Utilitaires;
 public class Menu {
 	public static Pion[][] menu(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
+		for (int l = 0;l < tabJoueur1.length; l++) {
+			tabJoueur1[l].canEat(tabJoueur1, tabJoueur2);
+			tabJoueur1[l].canMove(tabJoueur1, tabJoueur2);
+		}
+		
 		Score(tabJoueur1, tabJoueur2);
 		System.out.print("couleur du joueur 1 : ");
 		System.out.println(tabJoueur1[0].getCharacter());
@@ -15,7 +20,7 @@ public class Menu {
 		int intChoosedPion;
 		while(pionMoove == null)
 		{
-			System.out.println("choisissez quel pion vous voulez déplacer");
+			System.out.println("choisissez quel pion vous voulez dï¿½placer");
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
 			for (int i = 0;i<tabJoueur1.length; i++) {
@@ -53,23 +58,20 @@ public class Menu {
 					}
 					if (can(canMove)) {
 						
-						System.out.println("choisissez ou vous voulez déplacer ce pion");
+						System.out.println("choisissez ou vous voulez dï¿½placer ce pion");
 						int intNewPosPion = Utilitaires.readInt();
 						
 						for (int j : canMove) {
 							
 							if (j == intNewPosPion) {
-								
+								int oldPos = tabJoueur1[i].getPos();
 								if (can(canEat)) {
 									int oldPos = tabJoueur1[i].getPos();
 									//tuer le pion mangï¿½----------------------------------------------------
 									
 									
-									tabJoueur1[i].setPos(intNewPosPion);
-									Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
-									menu(tabJoueur1, tabJoueur2);
 								}
-								
+								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos +"  > "+intNewPosPion + "\n");
 								tabJoueur1[i].setPos(intNewPosPion);
 								Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 								return tabReturn;
@@ -87,6 +89,14 @@ public class Menu {
 		}
 		
 		return null;
+	}
+	
+	public static int killPion(int oldPos, int newPos)
+	{
+		int killPos = 0;
+		killPos = ((newPos - oldPos)/2)+newPos;
+		
+		return killPos;
 	}
 	
 	public static int menuModeGame()
