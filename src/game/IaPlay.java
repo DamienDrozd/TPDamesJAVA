@@ -30,15 +30,7 @@ public class IaPlay {
 					if (cantplay == false && (Menu.can(canMove) || Menu.can(canEat))) {
 						//test can mooved
 						
-						for (int pion : canMove) {
-							System.out.println(pion);
-						}
-						
-						System.out.println("");
-						
-						for (int pion : canEat) {
-							System.out.println(pion);
-						}
+						Utilitaires.PrintTab(canMove);
 						
 						
 						if (Menu.can(canEat)) {
@@ -75,6 +67,7 @@ public class IaPlay {
 								}
 								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								tabJoueur1[intChoosedPion].setPos(intNewPosPion);
+								return tabReturn;
 							}
 							return tabReturn;
 							 
