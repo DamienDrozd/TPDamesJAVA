@@ -205,25 +205,97 @@ public class Pion {
 				}
 			} 
 //-------------------------------------Pour les deplacements des dames--------------------------------------------
-			else if (this.getType == "dame")
+			else if (this.getType() == "dame")
 			{	
-				if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 )
+				if(this.getPos()%10 > 5 )
 				{
 					if (this.joueur == 1) 
 					{
 						
-							for (int i = 0; i < prohibited.length; i++)
+							for (int k = 0; k < prohibited.length; k++)
 							{
-								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false && ) 
+								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) 
 								{
-									can[0] = this.getPos() - 5;
+									
+									if (posND == 0)
+											{
+											posND =  this.getPos() -5;
+											can.add(this.getPos() - 5);
+											}
+											else
+											{
+												can.add(posND - 5);
+											}
 
 									while (pas != false)
 									{
 
-										if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false && (this.getPos() - 9) != prohibited[i])
+										if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false && (this.getPos() - 9) != prohibited[k])
 										{
-											can[1] = this.getPos() - 9;
+											if (posND == 0)
+											{
+											posND =  this.getPos() -9;
+											can.add(this.getPos() - 9);
+											}
+											else
+											{
+												can.add(posND - 9);
+												posND = posND - 9;
+											}
+										} 
+										else
+										{
+											pas = false;
+											break;
+										}
+									}
+								}
+							}
+						this.setTabCanMoove(can);
+						System.out.print(this.getPos());
+						return ;
+
+
+						
+
+					}
+				}
+
+				if(this.getPos()%10 <= 5)
+				{
+					if (this.joueur == 1) 
+					{
+						
+							for (int k = 0; k < prohibited.length; k++)
+							{
+								if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6)) != false) 
+								{
+									
+									if (posND == 0)
+											{
+											posND =  this.getPos() - 6;
+											can.add(this.getPos() - 6);
+											}
+											else
+											{
+												can.add(posND - 6);
+											}
+
+									while (pas != false)
+									{
+
+										if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 11)) != false && (this.getPos() - 11) != prohibited[k])
+										{
+											if (posND == 0)
+											{
+											posND =  this.getPos() - 11;
+											can.add(this.getPos() - 11);
+											}
+											else
+											{
+												can.add(posND - 11);
+												posND = posND - 11;
+											}
 										} 
 										else
 										{

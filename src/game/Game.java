@@ -35,13 +35,14 @@ public class Game {
 		
 		
 		
-		//choix aléatoire des couleurs
+		//choix alï¿½atoire des couleurs
 		int couleurInt = (int) (1 + Math.random() * ( 3-1 ));
 		for (int i=0;i<nbPions;i++) {
 			
 			if (couleurInt == 1) {
 				tabJoueur1[i] = new Men(50-i,null, 0,  "o", "Men", 1 , null , null, false);
 				tabJoueur2[i] = new Men(i+1,null, 0,  "x", "Men", 2, null , null, false);
+				tabJoueur1[i] = new King(27,null, 0,  "X", "King", 1 , null , null, false);
 			}
 			if (couleurInt == 2) {
 				tabJoueur1[i] = new Men(50-i,null, 0,  "x", "Men", 1, null , null, false);
@@ -56,9 +57,9 @@ public class Game {
 		int choixMode = Menu.menuModeGame();
 		
 		if (couleurInt == 1) {
-			System.out.println("Le joueur 1 a la couleur '0', c'est lui qui démarre le jeu");
+			System.out.println("Le joueur 1 a la couleur '0', c'est lui qui dï¿½marre le jeu");
 		}else {
-			System.out.println("Le joueur 2 a la couleur '0', c'est lui qui démarre le jeu");
+			System.out.println("Le joueur 2 a la couleur '0', c'est lui qui dï¿½marre le jeu");
 		}
 		
 		while(endGame != true) {
