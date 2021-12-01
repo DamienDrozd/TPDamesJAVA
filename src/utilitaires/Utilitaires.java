@@ -47,6 +47,17 @@ public class Utilitaires {
 	      e.printStackTrace();
 	    }
 	}
+	
+	public static void PrintTab(int[] tab) {
+		System.out.print("tab: ");
+		for (int i : tab) {
+			System.out.print(i+", ");
+		}
+		System.out.print("\n");
+	
+	}
+	
+	
 	 
 	 
 

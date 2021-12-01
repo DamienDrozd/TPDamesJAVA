@@ -39,16 +39,8 @@ public class Menu {
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
-					System.out.print("tabeat : ");
-					for (int nb : tabJoueur1[i].getTabCanEat()) {
-						System.out.print(nb + ", ");
-					}
-//					System.out.print("\n");
-//					System.out.print("tabmove : ");
-//					for (int nb : tabJoueur1[i].getTabCanMoove()) {
-//						System.out.print(nb + ", ");
-//					}
-//					System.out.print("\n");
+					
+					
 					
 					
 		
@@ -66,8 +58,24 @@ public class Menu {
 							if (j == intNewPosPion) {
 								int oldPos = tabJoueur1[i].getPos();
 								if (can(canEat)) {
-									int oldPos = tabJoueur1[i].getPos();
+									
 									//tuer le pion mang�----------------------------------------------------
+									int killPos = killPion(oldPos, intNewPosPion);
+									
+									for(int k = 0 ; k< tabJoueur2.length; k++) {
+										if (tabJoueur2[k].getPos() == killPos) {
+											tabJoueur2[k].setDead(true);
+										}
+									}
+									
+									for (int l = 0;l < tabJoueur1.length; l++) {
+										tabJoueur1[l].canEat(tabJoueur1, tabJoueur2);
+										tabJoueur1[l].canMove(tabJoueur1, tabJoueur2);
+										if (Menu.can(tabJoueur1[l].getTabCanEat())){
+											tabJoueur1[intChoosedPion].setPos(intNewPosPion);
+											menu(tabJoueur1, tabJoueur2);
+										}
+									}
 									
 									
 								}
