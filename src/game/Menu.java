@@ -6,6 +6,11 @@ import utilitaires.Utilitaires;
 public class Menu {
 	public static Pion[][] menu(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		
+		for (int l = 0;l < tabJoueur1.length; l++) {
+			tabJoueur1[l].canEat(tabJoueur1, tabJoueur2);
+			tabJoueur1[l].canMove(tabJoueur1, tabJoueur2);
+		}
+		
 		Score(tabJoueur1, tabJoueur2);
 		System.out.print("couleur du joueur 1 : ");
 		System.out.println(tabJoueur1[0].getCharacter());
@@ -29,27 +34,11 @@ public class Menu {
 						cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
 					}
 				}
-				
-				
-
-				
-				
-				
 				if (tabJoueur1[i].getPos() == intChoosedPion && cantplay == false) {
 					//test can mooved
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
-//					System.out.print("tabeat : ");
-//					for (int nb : tabJoueur1[i].getTabCanEat()) {
-//						System.out.print(nb + ", ");
-//					}
-//					System.out.print("\n");
-//					System.out.print("tabmove : ");
-//					for (int nb : tabJoueur1[i].getTabCanMoove()) {
-//						System.out.print(nb + ", ");
-//					}
-//					System.out.print("\n");
 					
 					
 		
@@ -65,17 +54,30 @@ public class Menu {
 						for (int j : canMove) {
 							
 							if (j == intNewPosPion) {
-								
+								int oldPos = tabJoueur1[i].getPos();
 								if (can(canEat)) {
-									int oldPos = tabJoueur1[i].getPos();
+									
 									//tuer le pion mangé----------------------------------------------------
+									int killPos = killPion(oldPos, intNewPosPion);
+									
+									for(int k = 0 ; k< tabJoueur2.length; k++) {
+										if (tabJoueur2[k].getPos() == killPos) {
+											tabJoueur2[k].setDead(true);
+										}
+									}
+									
+									for (int l = 0;l < tabJoueur1.length; l++) {
+										tabJoueur1[l].canEat(tabJoueur1, tabJoueur2);
+										tabJoueur1[l].canMove(tabJoueur1, tabJoueur2);
+										if (Menu.can(tabJoueur1[l].getTabCanEat())){
+											tabJoueur1[intChoosedPion].setPos(intNewPosPion);
+											menu(tabJoueur1, tabJoueur2);
+										}
+									}
 									
 									
-									tabJoueur1[i].setPos(intNewPosPion);
-									Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
-									menu(tabJoueur1, tabJoueur2);
 								}
-								
+								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos +"  > "+intNewPosPion + "\n");
 								tabJoueur1[i].setPos(intNewPosPion);
 								Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 								return tabReturn;
@@ -88,12 +90,19 @@ public class Menu {
 						continue;
 					}
 				}
-					System.out.println("ce pion ne peut pas etre deplace");
 			}
 			
 		}
 		
 		return null;
+	}
+	
+	public static int killPion(int oldPos, int newPos)
+	{
+		int killPos = 0;
+		killPos = ((newPos - oldPos)/2)+newPos;
+		
+		return killPos;
 	}
 	
 	public static int menuModeGame()
