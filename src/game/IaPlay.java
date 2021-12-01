@@ -1,5 +1,8 @@
 package game;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 import pion.Pion;
 import utilitaires.Utilitaires;
 
@@ -17,13 +20,13 @@ public class IaPlay {
 				boolean cantplay = false;
 
 					for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-						if (Menu.can(j.getTabCanEat()) == true) {
+						if (Menu.canEat(j.getMapCanEat()) == true) {
 							
 							
 							cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
 						}
 						if (tabJoueur1[intChoosedPion].getPos() == j.getPos()) {
-							if (Menu.can(j.getTabCanEat()) == true) {
+							if (Menu.canEat(j.getMapCanEat()) == true) {
 								cantplay = false;
 							}
 							
@@ -32,28 +35,24 @@ public class IaPlay {
 						
 						
 						
-					int[] canMove = tabJoueur1[intChoosedPion].getTabCanMoove();
-					int[] canEat = tabJoueur1[intChoosedPion].getTabCanEat();
-					if (cantplay == false && (Menu.can(canMove) || Menu.can(canEat))) {
+						
+					ArrayList<Integer> canMove = tabJoueur1[intChoosedPion].getTabCanMoove();
+					Map<Integer, ArrayList<Integer>> canEat = tabJoueur1[intChoosedPion].getMapCanEat();
+					if (cantplay == false && (Menu.canMove(canMove) || Menu.canEat(canEat))) {
 						//test can mooved
 						
 						Utilitaires.PrintTab(canMove);
 						
-						
-						if (Menu.can(canEat)) {
-							canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
-							
-						}
-						if (Menu.can(canMove)) {
-							int intNewPosPion = 0;
-							Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
+						int intNewPosPion = 0;
+						Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
+						if (Menu.canEat(canEat)) {
 							while (intNewPosPion == 0) {
-								intNewPosPion = canMove[(int)(Math.random() * ( canMove.length ))];
+								intNewPosPion = canMove.get((int)(Math.random() * ( canMove.size() )));
 								if (intNewPosPion == 0) {
 									continue;
 								}
 								int oldPos = tabJoueur1[intChoosedPion].getPos();
-								if (Menu.can(canEat)) {
+								if (Menu.canEat(canEat)) {
 									
 									//tuer le pion mangé----------------------------------------------------
 									int killPos = Menu.killPion(oldPos, intNewPosPion);
@@ -68,12 +67,24 @@ public class IaPlay {
 									for (int i = 0;i < tabJoueur1.length; i++) {
 										tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 										tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
-										if (Menu.can(tabJoueur1[i].getTabCanEat())){
+										if (Menu.canEat(tabJoueur1[i].getMapCanEat())){
 											tabJoueur1[intChoosedPion].setPos(intNewPosPion);
 											iaPlay(tabJoueur1, tabJoueur2);
 										}
 									}
 								}
+							}
+							
+						}
+						if (Menu.canMove(canMove)) {
+							
+							while (intNewPosPion == 0) {
+								intNewPosPion = canMove.get((int)(Math.random() * ( canMove.size() )));
+								if (intNewPosPion == 0) {
+									continue;
+								}
+								int oldPos = tabJoueur1[intChoosedPion].getPos();
+								
 								System.out.print("Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								tabJoueur1[intChoosedPion].setPos(intNewPosPion);
