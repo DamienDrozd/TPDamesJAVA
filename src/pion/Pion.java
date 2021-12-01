@@ -192,6 +192,7 @@ public class Pion {
 				}
 			} 
 //-------------------------------------Pour les deplacements des dames--------------------------------------------
+<<<<<<< HEAD
 			else if (this.getType() == "dame")
 			{	
 				if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 )
@@ -202,11 +203,24 @@ public class Pion {
 						{
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) 
 						{
+=======
+			// else if (this.getType == "dame")
+			// {	
+			// 	if(this.getPos()%10 == 0 || (this.getPos()-1)%10 == 0 )
+			// 	{
+			// 		if (this.joueur == 1) 
+			// 		{
+			// 			while (pas != false)
+			// 			{
+			// 			if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != false) 
+			// 			{
+>>>>>>> 748be67cc2ee500125dbfe74cb0d621c530c30bc
 
 
-							if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false)
-							{
+			// 				if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false)
+			// 				{
 
+<<<<<<< HEAD
 							} 
 							else
 							{
@@ -216,14 +230,26 @@ public class Pion {
 						}
 						this.setTabCanMoove(can);
 						return ;
+=======
+			// 				} 
+			// 				else
+			// 				{
+			// 					pas = false;
+			// 					break;
+			// 				}
+			// 			}
+			// 			this.setTabCanMoove(can);
+			// 			System.out.print(this.getPos());
+			// 			return ;
+>>>>>>> 748be67cc2ee500125dbfe74cb0d621c530c30bc
 
 
-						}
+			// 			}
 
-					}
-				}
+			// 		}
+			// 	}
 	
-			}			
+			// }			
 		this.setTabCanMoove(can);
 		}
 	}
@@ -243,6 +269,18 @@ public class Pion {
     	return 0;
 	}
 
+
+	public int testPoseat(Pion[] tabJoueur1, Pion[] tabJoueur2, int posToTest) {
+        for (int i=0; i < tabJoueur1.length - 1;i++){
+            if (tabJoueur1[i].getPos() == posToTest ) {
+                return tabJoueur1[i].getJoueur();
+            }
+            if (tabJoueur2[i].getPos() == posToTest) {
+                return tabJoueur2[i].getJoueur();
+            }
+        }
+        return 0;
+    }
 	
 		
 	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
@@ -253,6 +291,10 @@ public class Pion {
 		 if (this.getPos()%10 <= 5) {
 			 if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false || testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6)) == false || testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6)) == false ) )
 			  {
+<<<<<<< HEAD
+=======
+				
+>>>>>>> 748be67cc2ee500125dbfe74cb0d621c530c30bc
 				for (int i = 0; i < prohibited.length-1; i++) {
 					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false && (this.getPos() - 5) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false) {
@@ -283,6 +325,11 @@ public class Pion {
 		else if (this.getPos()%10 > 5) { //Diag similaire == +/- 9 ou +/- 11
 			if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6))) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5))) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6))) == false)
 			  {
+<<<<<<< HEAD
+=======
+				System.out.println("possibilité de manger : " + canE[0] +  canE[1]+  canE[2] +  canE[3] );
+
+>>>>>>> 748be67cc2ee500125dbfe74cb0d621c530c30bc
 				for (int i = 0; i < prohibited.length-1; i++) {
 					if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false && (this.getPos() - 5) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false) {
