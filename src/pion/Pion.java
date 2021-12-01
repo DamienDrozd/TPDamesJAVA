@@ -298,7 +298,7 @@ public class Pion {
 		else if (this.getPos()%10 > 5) { //Diag similaire == +/- 9 ou +/- 11
 			if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6))) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5))) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6))) == false)
 			  {
-				System.out.println("possibilité de manger : " + canE[0] +  canE[1]+  canE[2] +  canE[3] );
+				
 
 				for (int i = 0; i < prohibited.length-1; i++) {
 					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == 0 && (this.getPos() - 5) != prohibited[i]) {
