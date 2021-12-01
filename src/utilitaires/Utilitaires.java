@@ -1,5 +1,6 @@
 package utilitaires;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.io.*;
@@ -49,19 +50,23 @@ public class Utilitaires {
 	    }
 	}
 	
-	public static void PrintTab(int[] tab) {
+	public static void PrintTab(ArrayList<Integer> tab) {
 		System.out.print("tab: ");
-		for (int i : tab) {
-			System.out.print(i+", ");
-		}
-		
+		for (int i = 0; i < tab.size(); i++) {
+		      System.out.println(tab.get(i)+", ");
+		 }
+		System.out.print("\n");
 	
 	}
 	
-	public static void PrintMap(Map<Integer, Integer> Map) {
+	public static void PrintMap(Map<Integer, ArrayList<Integer>> map) {
 		System.out.print("map: ");
-		for (Map.Entry<Integer, Integer> nb : Map.entrySet()) {
-			System.out.print(nb.getKey()+", " + nb.getValue() + " / ");
+		for (Map.Entry<Integer, ArrayList<Integer>> tab : map.entrySet()) {
+			System.out.print(tab.getKey()+", " );
+			for (int i = 0; i < tab.getValue().size(); i++) {
+			      System.out.println(tab.getValue().get(i));
+			    }
+			System.out.print(" / ");
 		}
 		System.out.print("\n");
 	}

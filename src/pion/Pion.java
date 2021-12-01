@@ -1,5 +1,6 @@
 package pion;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,16 +15,15 @@ public class Pion {
     String character;
 	String type = "pion";
 	int joueur;
-    int[] tabCanMoove;
-    int[] tabCanEat;
-    Map<Integer, Integer> mapCanEat = new HashMap<Integer, Integer>();
+	ArrayList<Integer> tabCanMoove;
+    Map<Integer, ArrayList<Integer>> mapCanEat = new HashMap<Integer, ArrayList<Integer>>();
     boolean isDead = false;
     
     
 	
 	
 	public Pion(int pos, String[] direction, int nbCase, String character, String type, int joueur, 
-			int[] tabCanMoove, int[] tabCanEat, boolean isDead) {
+			ArrayList<Integer> tabCanMoove, ArrayList<Integer> tabCanEat, boolean isDead) {
 		super();
 		this.pos = pos;
 		this.direction = direction;
@@ -32,7 +32,6 @@ public class Pion {
 		this.type = type;
 		this.joueur = joueur;
 		this.tabCanMoove = tabCanMoove;
-		this.tabCanEat = tabCanEat;
 		this.isDead = isDead;
 	}
 	public int getPos() {
@@ -71,17 +70,12 @@ public class Pion {
 	public void setJoueur(int joueur) {
 		this.joueur = joueur;
 	}
-	public int[] getTabCanMoove() {
+	
+	public ArrayList<Integer> getTabCanMoove() {
 		return tabCanMoove;
 	}
-	public void setTabCanMoove(int[] tabCanMoove) {
+	public void setTabCanMoove(ArrayList<Integer> tabCanMoove) {
 		this.tabCanMoove = tabCanMoove;
-	}
-	public int[] getTabCanEat() {
-		return tabCanEat;
-	}
-	public void setTabCanEat(int[] tabCanEat) {
-		this.tabCanEat = tabCanEat;
 	}
 	public boolean isDead() {
 		return isDead;
@@ -89,18 +83,20 @@ public class Pion {
 	public void setDead(boolean isDead) {
 		this.isDead = isDead;
 	}
-	public Map<Integer, Integer> getMapCanEat() {
+	
+	public Map<Integer, ArrayList<Integer>> getMapCanEat() {
 		return mapCanEat;
 	}
-	public void setMapCanEat(Map<Integer, Integer> mapCanEat) {
+	public void setMapCanEat(Map<Integer, ArrayList<Integer>> mapCanEat) {
 		this.mapCanEat = mapCanEat;
 	}
 	public String toString() {
 		return "Pion [pos=" + pos + ", direction=" + Arrays.toString(direction) + ", nbCase=" + nbCase + ", character="
-				+ character + ", type=" + type + ", joueur=" + joueur + ", eat="  + ", tabCanMoove="
-				+ Arrays.toString(tabCanMoove) + ", tabCanEat=" + Arrays.toString(tabCanEat) + ", isDead=" + isDead
-				+ "]";
+				+ character + ", type=" + type + ", joueur=" + joueur + ", tabCanMoove=" + tabCanMoove + ", mapCanEat="
+				+ mapCanEat + ", isDead=" + isDead + "]";
 	}
+
+	
 
 
 // ajouter dansune map la pos du pion qui se fait manger ainsi que la position finale du pion qui mange
@@ -108,8 +104,10 @@ public class Pion {
 // dames qui mangent
 
 	
+	
+	
 	public void canMove(Pion[] tabJoueur1, Pion[] tabJoueur2) {
-		int[] can = new int[2];
+		ArrayList<Integer> can = new ArrayList<Integer>();
 		boolean pas = true;
 		int posND = 0;
 		int[] prohibited = new int[] {1, 11 , 21 , 31 , 41, 10, 20, 30, 40 , 50};
@@ -124,14 +122,14 @@ public class Pion {
                     
 					if (this.joueur == 1) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == true) {
-							can[0] = this.getPos() - 5;
+							can.add(this.getPos() - 5);
 						}
 						this.setTabCanMoove(can);
 						return ;
 			
 					} else if (this.joueur == 2) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == true) {
-							can[0] = this.getPos() + 5;
+							can.add(this.getPos() + 5);
 							this.setTabCanMoove(can);
 							return ;
 						}
@@ -144,14 +142,14 @@ public class Pion {
 					
 					if (this.joueur == 1) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == true) {
-							can[0] = this.getPos() - 5;
+							can.add(this.getPos() - 5);
 							this.setTabCanMoove(can);
 							return ;
 						}
 			
 					} else if (this.joueur == 2) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == true) {
-							can[0] = this.getPos() + 5;
+							can.add(this.getPos() + 5);
 							this.setTabCanMoove(can);
 							return ;
 						}
@@ -162,20 +160,20 @@ public class Pion {
 				if (this.getPos()%10 > 5) {
 					if (this.joueur == 1) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == true) {
-							can[0] = this.getPos() - 5;
+							can.add(this.getPos() - 5);
 						}
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 4)) == true){
-							can[1] = this.getPos() - 4;
+							can.add(this.getPos() - 4);
 						}
 						this.setTabCanMoove(can);
 						return ;
 						
 					} else if (this.joueur == 2) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == true) {
-								can[0] = this.getPos() + 5;
+							can.add(this.getPos() + 5);
 						}
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6)) == true){
-							can[1] = this.getPos() + 6;
+							can.add(this.getPos() + 6);
 						}
 						this.setTabCanMoove(can);
 						return ;
@@ -186,19 +184,19 @@ public class Pion {
 				if (this.getPos()%10 <= 5) {
 					if (this.joueur == 1) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 6)) == true) {
-							can[0] = this.getPos() - 6;
+							can.add(this.getPos() - 6);
 						}
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == true){
-							can[1] = this.getPos() - 5;
+							can.add(this.getPos() - 5);
 						}
 						this.setTabCanMoove(can);
 						return ;
 					} else if (this.joueur == 2) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == true) {
-							can[0] = this.getPos() + 5;
+							can.add(this.getPos() + 5);
 						}
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 4)) == true){
-							can[1] = this.getPos() + 4;
+							can.add(this.getPos() + 4);
 						}
 						this.setTabCanMoove(can);
 						return ;
@@ -253,7 +251,7 @@ public class Pion {
 
 
 			
-	public boolean testPos(Pion[] tabJoueur1, Pion[] tabJoueur2, int posToTest) {
+	public static boolean testPos(Pion[] tabJoueur1, Pion[] tabJoueur2, int posToTest) {
     	for (int i=0; i < tabJoueur1.length - 1;i++){
             if (tabJoueur1[i].getPos() == posToTest ) {
             	return false;
@@ -281,8 +279,8 @@ public class Pion {
 		
 	 public void canEat(Pion[] tabJoueur1, Pion[] tabJoueur2) {
 		 int[] prohibited = new int[] {1, 11 , 21 , 31 , 41, 10, 20, 30, 40 , 50};
-		 Map<Integer, Integer> canE = new HashMap<Integer, Integer>();
-		 
+		 Map<Integer, ArrayList<Integer>> canE = new HashMap<Integer, ArrayList<Integer>>();
+		 ArrayList<Integer> addInMap = new ArrayList<Integer>();
 //---------------------------------------------------pions sur les colonnes paires----------------
 		 if (this.getPos()%10 > 5 || this.getPos()%10 == 0) {
 			 if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false || testPos(tabJoueur1,tabJoueur2, (this.getPos() - 5)) == false || testPos(tabJoueur1,tabJoueur2, (this.getPos() + 5)) == false || (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 6)) == false ) )
@@ -292,26 +290,29 @@ public class Pion {
 					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != 0 && (this.getPos() - 5) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 11)) != false) {
-							System.out.print("test222");
-							canE.put(this.getPos() - 11, this.getPos() - 5);
+							addInMap.add(this.getPos() - 5);
+							canE.put(this.getPos() - 11, addInMap);
 						}
 					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != 0 && (this.getPos() - 4) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false ) {
-							canE.put(this.getPos() - 9, this.getPos() - 4);
+							addInMap.add(this.getPos() - 4);
+							canE.put(this.getPos() - 9, addInMap);
 						}
 					}
 					
 					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != 0 && (this.getPos() + 4) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 9)) != false) {
-							canE.put(this.getPos() - 9, this.getPos() - 4);
+							addInMap.add(this.getPos() + 4);
+							canE.put(this.getPos() + 9, addInMap);
 						}
 						
 					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 11)) != false ) {
-							canE.put(this.getPos() - 11, this.getPos() - 5);
+							addInMap.add(this.getPos() + 5);
+							canE.put(this.getPos() + 11, addInMap);
 						}
 					}
 				
@@ -331,22 +332,26 @@ public class Pion {
 				for (int i = 0; i < prohibited.length-1; i++) {
 					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != 0 && (this.getPos() - 5) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false) {
-							canE.put(this.getPos() - 9, this.getPos() - 5);
+							addInMap.add(this.getPos() - 5);
+							canE.put(this.getPos() - 9, addInMap);
 						} 
 					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 6)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 6)) != 0 && (this.getPos() - 6) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 11)) != false ) {
-							canE.put(this.getPos() - 6, this.getPos() - 11);
+							addInMap.add(this.getPos() - 6);
+							canE.put(this.getPos() - 11, addInMap);
 						}
 					}
 					
-					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
-						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 9)) != false) {
-							canE.put(this.getPos() - 9, this.getPos() - 5);
+					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
+						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false) {
+							addInMap.add(this.getPos() - 5);
+							canE.put(this.getPos() - 9, addInMap);
 						}
 						
 					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != 0 && (this.getPos() + 6) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 11)) != false ) {
-							canE.put(this.getPos() - 11, this.getPos() - 6);
+							addInMap.add(this.getPos() + 6);
+							canE.put(this.getPos() + 11, addInMap);
 						}
 					}
 					this.setMapCanEat(canE);
