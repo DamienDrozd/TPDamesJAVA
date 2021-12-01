@@ -15,7 +15,7 @@ public class Menu {
 		int intChoosedPion;
 		while(pionMoove == null)
 		{
-			System.out.println("choisissez quel pion vous voulez dï¿½placer");
+			System.out.println("choisissez quel pion vous voulez déplacer");
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
 			for (int i = 0;i<tabJoueur1.length; i++) {
@@ -29,21 +29,15 @@ public class Menu {
 						cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
 					}
 				}
-				
-				
-
-				
-				
-				
 				if (tabJoueur1[i].getPos() == intChoosedPion && cantplay == false) {
 					//test can mooved
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
-//					System.out.print("tabeat : ");
-//					for (int nb : tabJoueur1[i].getTabCanEat()) {
-//						System.out.print(nb + ", ");
-//					}
+					System.out.print("tabeat : ");
+					for (int nb : tabJoueur1[i].getTabCanEat()) {
+						System.out.print(nb + ", ");
+					}
 //					System.out.print("\n");
 //					System.out.print("tabmove : ");
 //					for (int nb : tabJoueur1[i].getTabCanMoove()) {
@@ -54,12 +48,12 @@ public class Menu {
 					
 		
 					if (can(canEat)) {
-						canMove = canEat;//Le pion est forcé de manger un adversaire si il le peut
+						canMove = canEat;//Le pion est forcï¿½ de manger un adversaire si il le peut
 
 					}
 					if (can(canMove)) {
 						
-						System.out.println("choisissez ou vous voulez dï¿½placer ce pion");
+						System.out.println("choisissez ou vous voulez déplacer ce pion");
 						int intNewPosPion = Utilitaires.readInt();
 						
 						for (int j : canMove) {
@@ -68,7 +62,7 @@ public class Menu {
 								
 								if (can(canEat)) {
 									int oldPos = tabJoueur1[i].getPos();
-									//tuer le pion mangé----------------------------------------------------
+									//tuer le pion mangï¿½----------------------------------------------------
 									
 									
 									tabJoueur1[i].setPos(intNewPosPion);
@@ -88,7 +82,6 @@ public class Menu {
 						continue;
 					}
 				}
-					System.out.println("ce pion ne peut pas etre deplace");
 			}
 			
 		}
