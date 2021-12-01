@@ -65,6 +65,7 @@ public class IaPlay {
 										}
 									}
 								}
+								System.out.print("Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								tabJoueur1[intChoosedPion].setPos(intNewPosPion);
 								return tabReturn;

@@ -1,5 +1,0 @@
-Déroulement de la partie
-Tour 1 :
-Joueur 8 : 17 > 22
-Joueur 8 : 22 > 27
-Joueur 8 : 19 > 25

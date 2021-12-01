@@ -31,15 +31,22 @@ public class Menu {
 							cantplay = false;
 							break;
 						}
+						
 						cantplay = true;// si un pion peut manger et qu'il n'est pas s�l�ctionn� alors le joueur ne peut pas jouer
 					}
 				}
+				System.out.println(tabJoueur1[i].getPos());
+				System.out.println("tabcaneat");
+				Utilitaires.PrintTab(tabJoueur1[i].getTabCanEat());
+				System.out.println("TabCanMoove");
+				Utilitaires.PrintTab(tabJoueur1[i].getTabCanMoove());
 				if (tabJoueur1[i].getPos() == intChoosedPion && cantplay == false) {
 					//test can mooved
 					int[] canMove = tabJoueur1[i].getTabCanMoove();
 					int[] canEat = tabJoueur1[i].getTabCanEat();
 					
-					
+					System.out.println(tabJoueur1[i].getPos());
+					Utilitaires.PrintTab(canEat);
 					
 					
 					
