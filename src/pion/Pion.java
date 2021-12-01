@@ -324,11 +324,13 @@ public class Pion {
 
 			
 	public static boolean testPos(Pion[] tabJoueur1, Pion[] tabJoueur2, int posToTest) {
-    	for (int i=0; i < tabJoueur1.length - 1;i++){
+    	for (int i=0; i < tabJoueur1.length;i++){
             if (tabJoueur1[i].getPos() == posToTest ) {
             	return false;
             }
-            if (tabJoueur2[i].getPos() == posToTest) {
+    	}
+    	for (int i=0; i < tabJoueur2.length;i++){
+            if (tabJoueur2[i].getPos() == posToTest ) {
             	return false;
             }
     	}
@@ -337,7 +339,7 @@ public class Pion {
 
 
 	public int testPoseat(Pion[] tabJoueur1, Pion[] tabJoueur2, int posToTest) {
-        for (int i=0; i < tabJoueur1.length - 1;i++){
+        for (int i=0; i < tabJoueur1.length;i++){
             if (tabJoueur1[i].getPos() == posToTest ) {
                 return tabJoueur1[i].getJoueur();
             }
@@ -373,17 +375,17 @@ public class Pion {
 						}
 					}
 					
-					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != 0 && (this.getPos() + 4) != prohibited[i]) {
+					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 9)) != false) {
-							addInMap.add(this.getPos() + 4);
+							addInMap.add(this.getPos() + 5);
 							canE.put(this.getPos() + 9, addInMap);
 						}
 						
-					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
+					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != 0 && (this.getPos() + 6) != prohibited[i]) {
 						
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 11)) != false ) {
-							addInMap.add(this.getPos() + 5);
+							addInMap.add(this.getPos() + 6);
 							canE.put(this.getPos() + 11, addInMap);
 						}
 					}
@@ -414,15 +416,15 @@ public class Pion {
 						}
 					}
 					
-					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 5)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
+					if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() - 4)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 4)) != 0 && (this.getPos() + 4) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() - 9)) != false) {
-							addInMap.add(this.getPos() - 5);
+							addInMap.add(this.getPos() - 4);
 							canE.put(this.getPos() - 9, addInMap);
 						}
 						
-					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 6)) != 0 && (this.getPos() + 6) != prohibited[i]) {
+					} else if (testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != this.getJoueur() && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && testPoseat(tabJoueur1,tabJoueur2, (this.getPos() + 5)) != 0 && (this.getPos() + 5) != prohibited[i]) {
 						if (testPos(tabJoueur1,tabJoueur2, (this.getPos() + 11)) != false ) {
-							addInMap.add(this.getPos() + 6);
+							addInMap.add(this.getPos() + 5);
 							canE.put(this.getPos() + 11, addInMap);
 						}
 					}

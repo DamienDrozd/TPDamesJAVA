@@ -20,56 +20,79 @@ public class IaPlay {
 				boolean cantplay = false;
 
 					for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
+						System.out.println(j.getPos());
+						
 						if (Menu.canEat(j.getMapCanEat()) == true) {
 							
 							
 							cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
-						}
-						if (tabJoueur1[intChoosedPion].getPos() == j.getPos()) {
-							if (Menu.canEat(j.getMapCanEat()) == true) {
-								cantplay = false;
-							}
 							
 						}
-						
-						
-						
-						
+					}
+					
+					if (Menu.canEat(tabJoueur1[intChoosedPion].getMapCanEat()) == true) {
+						cantplay = false;
+					}
 						
 					ArrayList<Integer> canMove = tabJoueur1[intChoosedPion].getTabCanMoove();
 					Map<Integer, ArrayList<Integer>> canEat = tabJoueur1[intChoosedPion].getMapCanEat();
 					if (cantplay == false && (Menu.canMove(canMove) || Menu.canEat(canEat))) {
 						//test can mooved
 						
-						Utilitaires.PrintTab(canMove);
 						
 						int intNewPosPion = 0;
 						Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 						if (Menu.canEat(canEat)) {
 							while (intNewPosPion == 0) {
-								intNewPosPion = canMove.get((int)(Math.random() * ( canMove.size() )));
+								ArrayList<Integer> tab = null;
+								if (canEat.size() != 0) {
+									int j = 0;
+									int k = (int)(Math.random() * ( canEat.size());
+									
+									for (int i : canEat.keySet()) {
+										  j++;
+										  if (j == k) {
+											  tab = canEat.get(i);
+										  }
+									}
+								}
+								intNewPosPion = canEat.get(tab.getKey());
+
 								if (intNewPosPion == 0) {
 									continue;
 								}
-								int oldPos = tabJoueur1[intChoosedPion].getPos();
 								if (Menu.canEat(canEat)) {
 									
-									//tuer le pion mangé----------------------------------------------------
-									int killPos = Menu.killPion(oldPos, intNewPosPion);
-									
-									
-									for(int k = 0 ; k< tabJoueur2.length; k++) {
-										if (tabJoueur2[k].getPos() == killPos) {
-											tabJoueur2[k].setDead(true);
-										}
-									}
-									
-									for (int i = 0;i < tabJoueur1.length; i++) {
-										tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
-										tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
-										if (Menu.canEat(tabJoueur1[i].getMapCanEat())){
+									for (Map.Entry<Integer, ArrayList<Integer>> nb : canEat.entrySet()) {
+										
+										if (nb.getKey() == intNewPosPion) {
+										
+											
+											for(int k = 0 ; k< tabJoueur2.length; k++) {
+												for(int l = 0 ; l< nb.getValue().size(); l++) {
+													if (tabJoueur2[k].getPos() == nb.getValue().get(l)) {
+														tabJoueur2[k].setDead(true);
+														tabJoueur2[k].setPos(0);
+														System.out.println("le joueur "+tabJoueur1[0].getJoueur()+" a mangé le pion "+ tabJoueur2[k].getPos());
+														continue;
+													}
+												}
+											}
+											for (int i = 0;i < tabJoueur1.length; i++) {
+												tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
+												tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
+											}
 											tabJoueur1[intChoosedPion].setPos(intNewPosPion);
-											iaPlay(tabJoueur1, tabJoueur2);
+											tabReturn[0] = tabJoueur1;
+											tabReturn[1] = tabJoueur2;
+											return tabReturn;
+//											if (Menu.canEat(PionToMove.getMapCanEat())){
+//												
+//												String[] mapGame = new String[(Game.tailleTabX*Game.tailleTabY)/2];
+//												mapGame = Tab.remplirTab(mapGame, tabJoueur1, tabJoueur2);
+//												PrintGame.printGame(mapGame);
+//												menu(tabJoueur1, tabJoueur2);
+//											}
 										}
 									}
 								}
@@ -95,7 +118,7 @@ public class IaPlay {
 							return tabReturn;
 							 
 						} 
-					}
+					
 				}
 			}
 			return null;
