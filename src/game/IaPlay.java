@@ -17,13 +17,20 @@ public class IaPlay {
 				boolean cantplay = false;
 
 					for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-						if (Menu.can(j.getTabCanEat())) {
-							if (tabJoueur1[intChoosedPion].getPos() == j.getPos()) {
+						if (Menu.can(j.getTabCanEat()) == true) {
+							
+							
+							cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
+						}
+						if (tabJoueur1[intChoosedPion].getPos() == j.getPos()) {
+							if (Menu.can(j.getTabCanEat()) == true) {
 								cantplay = false;
-								break;
 							}
-							cantplay = true;// si un pion peut manger et qu'il n'est pas séléctionné alors le joueur ne peut pas jouer
-					}
+							
+						}
+						
+						
+						
 						
 					int[] canMove = tabJoueur1[intChoosedPion].getTabCanMoove();
 					int[] canEat = tabJoueur1[intChoosedPion].getTabCanEat();
@@ -42,11 +49,15 @@ public class IaPlay {
 							Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 							while (intNewPosPion == 0) {
 								intNewPosPion = canMove[(int)(Math.random() * ( canMove.length ))];
+								if (intNewPosPion == 0) {
+									continue;
+								}
 								int oldPos = tabJoueur1[intChoosedPion].getPos();
 								if (Menu.can(canEat)) {
 									
 									//tuer le pion mangé----------------------------------------------------
 									int killPos = Menu.killPion(oldPos, intNewPosPion);
+									
 									
 									for(int k = 0 ; k< tabJoueur2.length; k++) {
 										if (tabJoueur2[k].getPos() == killPos) {
@@ -59,8 +70,6 @@ public class IaPlay {
 										tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
 										if (Menu.can(tabJoueur1[i].getTabCanEat())){
 											tabJoueur1[intChoosedPion].setPos(intNewPosPion);
-											tabReturn[0] = tabJoueur1;
-											tabReturn[1] = tabJoueur2;
 											iaPlay(tabJoueur1, tabJoueur2);
 										}
 									}
@@ -68,6 +77,8 @@ public class IaPlay {
 								System.out.print("Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos+" > "+intNewPosPion+"\n");
 								tabJoueur1[intChoosedPion].setPos(intNewPosPion);
+								tabReturn[0] = tabJoueur1;
+								tabReturn[1] = tabJoueur2;
 								return tabReturn;
 							}
 							return tabReturn;

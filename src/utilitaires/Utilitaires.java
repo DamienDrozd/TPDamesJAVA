@@ -1,5 +1,6 @@
 package utilitaires;
 
+import java.util.Map;
 import java.util.Scanner;
 import java.io.*;
 import java.nio.file.*;
@@ -53,8 +54,16 @@ public class Utilitaires {
 		for (int i : tab) {
 			System.out.print(i+", ");
 		}
-		System.out.print("\n");
+		
 	
+	}
+	
+	public static void PrintMap(Map<Integer, Integer> Map) {
+		System.out.print("map: ");
+		for (Map.Entry<Integer, Integer> nb : Map.entrySet()) {
+			System.out.print(nb.getKey()+", " + nb.getValue() + " / ");
+		}
+		System.out.print("\n");
 	}
 	
 	
