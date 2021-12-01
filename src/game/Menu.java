@@ -26,39 +26,39 @@ public class Menu {
 			System.out.println("choisissez quel pion vous voulez dï¿½placer");
 			intChoosedPion = Utilitaires.readInt();
 			boolean cantplay = false;
-			Pion PionToMove = null;
+			int PionToMove = 0;
 				
-				for (Pion j : tabJoueur1) { //test de pion pouvant manger un autre
-					if (canEat(j.getMapCanEat()) == true) {
+				for (int j = 0; j < tabJoueur1.length; j++) { //test de pion pouvant manger un autre
+					if (canEat(tabJoueur1[j].getMapCanEat()) == true) {
 						
 						cantplay = true;// si un pion peut manger et qu'il n'est pas sï¿½lï¿½ctionnï¿½ alors le joueur ne peut pas jouer
 					}
-					if (intChoosedPion == j.getPos()) {
+					if (intChoosedPion == tabJoueur1[j].getPos()) {
 						 PionToMove = j;
 					}
 				}
-				if ( PionToMove != null) {
-					if (canEat(PionToMove.getMapCanEat()) == true) {
+				
+					if (canEat(tabJoueur1[PionToMove].getMapCanEat()) == true) {
 						cantplay = false;
 					}
-				}
+				
 				
 					
 				
 				
 				
-				if (PionToMove.getPos() == intChoosedPion && cantplay == false) {
+				if (tabJoueur1[PionToMove].getPos() == intChoosedPion && cantplay == false) {
 					//test can mooved
-					ArrayList<Integer> canMove = PionToMove.getTabCanMoove();
-					Map<Integer, ArrayList<Integer>> canEat = PionToMove.getMapCanEat();
+					ArrayList<Integer> canMove = tabJoueur1[PionToMove].getTabCanMoove();
+					Map<Integer, ArrayList<Integer>> canEat = tabJoueur1[PionToMove].getMapCanEat();
 					
-					System.out.println(PionToMove.getPos());
+					System.out.println(tabJoueur1[PionToMove].getPos());
 					System.out.println("tabcaneat");
-					Utilitaires.PrintMap(PionToMove.getMapCanEat());
+					Utilitaires.PrintMap(tabJoueur1[PionToMove].getMapCanEat());
 					System.out.println("TabCanMoove");
-					Utilitaires.PrintTab(PionToMove.getTabCanMoove());
+					Utilitaires.PrintTab(tabJoueur1[PionToMove].getTabCanMoove());
 					
-					System.out.println(PionToMove.getPos());
+					System.out.println(tabJoueur1[PionToMove].getPos());
 					Utilitaires.PrintMap(canEat);
 					
 					
@@ -77,6 +77,7 @@ public class Menu {
 									for(int l = 0 ; l< nb.getValue().size(); l++) {
 										if (tabJoueur2[k].getPos() == nb.getValue().get(l)) {
 											tabJoueur2[k].setDead(true);
+											tabJoueur2[k].setPos(0);
 											System.out.println("le joueur "+tabJoueur1[0].getJoueur()+" a mangé le pion "+ tabJoueur2[k].getPos());
 											continue;
 										}
@@ -86,10 +87,10 @@ public class Menu {
 									tabJoueur1[i].canEat(tabJoueur1, tabJoueur2);
 									tabJoueur1[i].canMove(tabJoueur1, tabJoueur2);
 								}
-								PionToMove.setPos(intNewPosPion);
+								tabJoueur1[PionToMove].setPos(intNewPosPion);
 								Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 								return tabReturn;
-//								if (Menu.canEat(PionToMove.getMapCanEat())){
+//								if (Menu.canEat(tabJoueur1[PionToMove].getMapCanEat())){
 //									
 //									String[] mapGame = new String[(Game.tailleTabX*Game.tailleTabY)/2];
 //									mapGame = Tab.remplirTab(mapGame, tabJoueur1, tabJoueur2);
@@ -111,10 +112,10 @@ public class Menu {
 						for (int j : canMove) {
 							
 							if (j == intNewPosPion) {
-								int oldPos = PionToMove.getPos();
+								int oldPos = tabJoueur1[PionToMove].getPos();
 								
 								Utilitaires.addFile(Game.dateStr, "Joueur " + tabJoueur1[0].getJoueur() + " : " + oldPos +"  > "+intNewPosPion + "\n");
-								PionToMove.setPos(intNewPosPion);
+								tabJoueur1[PionToMove].setPos(intNewPosPion);
 								Pion[][] tabReturn = {tabJoueur1, tabJoueur2};
 								return tabReturn;
 							}
